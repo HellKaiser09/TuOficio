@@ -1,31 +1,24 @@
 
 :root {
-  --primary: 221, 83%, 53%; 
-  --primary-foreground: 210, 40%, 98%;
-  --secondary: 210, 40%, 96.1%;
-  --secondary-foreground: 222.2, 47.4%, 11.2%;
-  --accent: 262, 83%, 58%; 
-  --muted: 215.4, 16.3%, 46.9%;
-  --background: 0, 0%, 100%;
-  --foreground: 222.2, 84%, 4.9%;
-  --card: 0, 0%, 100%;
-  
-  /* Configuración general */
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --radius-full: 9999px;
   --font-sans: system-ui, -apple-system, sans-serif;
-  --background: 255, 255, 255;      
-  --foreground: 15, 23, 42;          
+  --background: 255, 255, 255;       
+  --foreground: 15, 23, 42;           
   --muted-foreground: 100, 116, 139; 
-  --border: 226, 232, 240;          
+  --border: 226, 232, 240;           
+  
   --primary: 79, 70, 229;            
   --primary-foreground: 255, 255, 255;
+
   --accent: 241, 245, 249;
   --accent-foreground: 15, 23, 42;
   --gradient-hero: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --gradient-hero2: linear-gradient(to right, #4f46e5, #db2777, #ea580c);
 }
 
+  
 * {
   box-sizing: border-box;
 }
@@ -80,7 +73,7 @@ body {
   color: rgb(var(--primary-foreground));
 }
 
-.logo-text {
+.logo-texto {
   font-family: "Inter", sans-serif; 
   font-size: 1.50rem; 
   font-weight: 700;   
@@ -105,7 +98,7 @@ body {
   color: rgb(var(--primary));
 }
 
-.actions-desktop {
+.acciones-desktop {
   display: none; 
   align-items: center;
   gap: 0.75rem; 
@@ -128,11 +121,11 @@ body {
   transition: all 0.2s ease;
 }
 
-.btn-ghost {
+.btn-transp {
   background-color: transparent;
   color: rgb(var(--foreground));
 }
-.btn-ghost:hover {
+.btn-transp:hover {
   background-color: rgba(var(--accent), 0.7); 
   color: rgb(var(--accent-foreground));
 }
@@ -150,22 +143,6 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.btn-gradient {
-  background-color: transparent;
-  border: 2px solid rgb(var(--primary));
-  color: rgb(var(--primary));
-  gap: 0.6rem;
-}
-.btn-gradient:hover {
-  background-color: rgb(var(--primary));
-  color: rgb(var(--primary-foreground));    
-  transform: scale(1.1);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-.btn-gradient:active {
-  transform: scale(0.98);
-}
-
 .mobile-menu-btn {
   display: block;
   padding: 0.5rem;
@@ -175,13 +152,12 @@ body {
   color: rgb(var(--foreground));
 }
 
-
 @media (min-width: 768px) {
   .nav-desktop {
     display: flex; 
   }
   
-  .actions-desktop {
+  .acciones-desktop {
     display: flex; 
   }
   
@@ -242,7 +218,7 @@ main{
   background-color: rgba(var(--accent), 0.3); /* Usando tu variable accent existente */
 }
 
-/* Badge Superior */
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -261,7 +237,7 @@ main{
   height: 1rem;
 }
 
-/* Tipografía Hero */
+
 .hero-title {
   font-size: 2.5rem;
   line-height: 1.2;
@@ -290,7 +266,7 @@ main{
   .hero-subtitle { font-size: 1.25rem; }
 }
 
-/* Tags Populares */
+
 .hero-tags {
   margin-bottom: 3rem;
   display: flex;
@@ -329,10 +305,10 @@ main{
   transform: translateY(-1px);
 }
 
-/* Estadísticas */
+
 .hero-stats {
   display: grid;
-  grid-template-columns: 1fr; /* Móvil: 1 columna */
+  grid-template-columns: 1fr; 
   gap: 2rem;
   width: 100%;
   margin-top: 1rem;
@@ -340,7 +316,7 @@ main{
 
 @media (min-width: 768px) {
   .hero-stats {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columnas */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 3rem;
   }
 }
@@ -374,7 +350,7 @@ main{
   color: rgb(var(--muted-foreground));
 }
 
-/* Animaciones */
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -400,4 +376,527 @@ main{
 
 .categoria-section{
     padding-left: 16px;
+}
+
+/* =========================================
+   SECCIÓN DE CATEGORÍAS
+   ========================================= */
+
+.seccion-categorias {
+    padding: 4rem 1rem;
+    background-color: rgb(var(--background)); 
+}
+
+.container-centrado {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.encabezado-seccion {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo-seccion {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(var(--foreground));
+    margin-bottom: 1rem;
+}
+
+.descripcion-seccion {
+    font-size: 1.125rem;
+    color: rgb(var(--muted-foreground));
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .titulo-seccion { font-size: 2.5rem; }
+}
+
+.malla-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Móvil: 2 columnas */
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .malla-categorias { grid-template-columns: repeat(3, 1fr); } /* Tablet chica */
+}
+
+@media (min-width: 1024px) {
+    .malla-categorias { grid-template-columns: repeat(3, 1fr); } /* PC: 6 columnas */
+}
+
+
+.tarjeta-categoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: rgb(var(--card));
+    border: 1px solid rgba(var(--border), 0.6);
+    border-radius: var(--radius-2xl);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.tarjeta-categoria:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+    border-color: rgba(var(--primary), 0.5);
+}
+
+.icon-categoria-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.75rem;
+    background-color: rgba(var(--primary), 0.08); 
+    color: rgb(var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.icono-svg-md {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+
+.tarjeta-categoria:hover .icon-categoria-box {
+    transform: scale(1.1);
+    background-color: rgb(var(--primary));
+    color: rgb(var(--primary-foreground));
+}
+
+/* --- Textos de la tarjeta --- */
+.nombre-categoria {
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgb(var(--foreground));
+    text-align: center;
+}
+
+.contador-categoria {
+    font-size: 0.8rem;
+    color: rgb(var(--muted-foreground));
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+/* =========================================
+   SECCIÓN: CÓMO FUNCIONA (PASOS)
+   ========================================= */
+
+.seccion-pasos {
+    padding: 5rem 1rem;
+    background-color: rgba(var(--secondary), 0.3);
+    overflow: hidden; 
+}
+
+
+.pasos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .pasos-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+
+.linea-conector {
+    display: none; 
+    position: absolute;
+    top: 5.5rem; 
+    left: 22%;
+    right: 22%;
+    height: 4px;
+    background: var(--gradient-hero2);
+    opacity: 0.2;
+    z-index: 0;
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .linea-conector { display: block; }
+}
+
+
+.paso-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 10; 
+}
+
+
+.paso-icono-caja {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    background-color: rgb(var(--card));
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: rgb(var(--primary));
+}
+
+
+.paso-icono-fondo {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(var(--primary), 0.1);
+    border-radius: 1rem;
+    z-index: -1;
+}
+
+.icono-grande {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+.paso-numero {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--gradient-hero);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.paso-titulo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgb(var(--foreground));
+    margin-bottom: 0.75rem;
+}
+
+.paso-descripcion {
+    font-size: 1rem;
+    color: rgb(var(--muted-foreground));
+    line-height: 1.6;
+    max-width: 300px; 
+}
+
+
+.contenedor-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.boton-cta-grande {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.875rem 2.5rem;
+    background: var(--gradient-hero);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+.boton-cta-grande:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);
+}
+
+/* =========================================
+   SECCIÓN CTA (¿Necesitas servicio? / ¿Eres Pro?)
+   ========================================= */
+
+.seccion-cta {
+    padding: 5rem 1rem;
+    background-color: rgb(var(--background));
+}
+
+/* Grilla de 2 columnas */
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1100px; /* Un poco más ancho para que respire */
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .cta-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* --- Tarjeta General --- */
+.cta-tarjeta {
+    position: relative;
+    padding: 2.5rem;
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(var(--border), 0.8);
+    background-color: rgb(var(--card));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Efecto Hover: Levantar tarjeta */
+.cta-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* -------------------------------------------
+   OPCIÓN 1: CLIENTE (Fondo Azul / Primario)
+   ------------------------------------------- */
+.tarjeta-cliente {
+    background-color: rgb(var(--primary));
+}
+
+/* Forzamos textos a blanco porque el fondo es oscuro/azul */
+.tarjeta-cliente .cta-titulo,
+.tarjeta-cliente .cta-texto,
+.tarjeta-cliente .cta-enlace {
+    color: #ffffff;
+}
+
+/* El icono: Caja blanca con icono azul */
+.tarjeta-cliente .cta-icono-caja {
+    background-color: #ffffff;
+    color: rgb(var(--primary));
+}
+
+/* -------------------------------------------
+   OPCIÓN 2: PROFESIONAL (Fondo Oscuro)
+   ------------------------------------------- */
+.tarjeta-pro {
+    background-color: rgb(var(--foreground)); /* Color negro/gris oscuro */
+}
+
+/* Forzamos textos a blanco */
+.tarjeta-pro .cta-titulo,
+.tarjeta-pro .cta-texto,
+.tarjeta-pro .cta-enlace {
+    color: #ffffff;
+}
+
+/* El icono: Caja blanca (o gris muy claro) con icono negro */
+.tarjeta-pro .cta-icono-caja {
+    background-color: #ffffff;
+    color: rgb(var(--foreground));
+}
+
+/* --- Elementos Internos (Comunes) --- */
+.cta-icono-caja {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave al icono */
+}
+
+.cta-titulo {
+    font-size: 1.75rem; /* Un poco más grande para impactar */
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.cta-texto {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9; /* Ligera transparencia para jerarquía visual */
+}
+
+/* --- Enlace con Flecha --- */
+.cta-enlace {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.125rem;
+    margin-top: auto;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent; /* Para efecto hover underline */
+    transition: border-color 0.2s;
+}
+
+.cta-enlace:hover {
+    border-bottom-color: rgba(255,255,255, 0.5);
+}
+
+.flecha-animada {
+    margin-left: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.cta-enlace:hover .flecha-animada {
+    transform: translateX(8px);
+}
+
+
+/* =========================================
+   FOOTER / PIE DE PÁGINA
+   ========================================= */
+
+.pie-pagina {
+    background-color: rgb(var(--foreground)); /* Fondo oscuro (Negro/Gris) */
+    color: rgb(var(--background)); /* Texto claro (Blanco) */
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Grilla Principal del Footer */
+.pie-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Móvil: 1 columna */
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .pie-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columnas */
+    }
+}
+
+@media (min-width: 1024px) {
+    .pie-grid {
+        /* Desktop: La columna de marca ocupa 2 espacios, el resto 1 */
+        grid-template-columns: 2fr 1fr 1fr 1fr; 
+    }
+}
+
+/* --- Columna de Marca (Logo y Redes) --- */
+.pie-marca-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pie-logo-enlace {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1.5rem;
+}
+
+.pie-logo-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: rgb(var(--primary));
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.pie-logo-texto {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.pie-descripcion {
+    color: rgba(255, 255, 255, 0.7); /* Blanco con transparencia */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 350px;
+}
+
+
+/* --- Columnas de Enlaces --- */
+.pie-columna-enlaces h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.pie-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pie-enlace {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.pie-enlace:hover {
+    color: rgb(var(--primary)); /* O color blanco puro #fff */
+}
+
+/* --- Barra Inferior (Copyright) --- */
+.pie-inferior {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.texto-legal {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 768px) {
+    .pie-inferior {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
 }
