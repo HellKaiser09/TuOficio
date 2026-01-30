@@ -12,6 +12,31 @@ body {
     padding: 40px 20px;
 }
 
+.volver-btn {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  border-radius: var(--radius-xl);
+  color: rgb(var(--primary));
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(var(--primary), 0.2);
+}
+
+.volver-btn:hover {
+  background-color: #f5f5f5;
+  border-color: rgba(var(--primary), 0.4);
+  transform: translateX(-4px);
+}
+
 /* Contenedor principal del formulario */
 .form-container {
     max-width: 800px;

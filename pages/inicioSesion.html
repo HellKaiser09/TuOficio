@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | Tu Oficio</title>
+    <link rel="stylesheet" href="/style/login-sesion.css">
+</head>
+<body>
+    <a href="/index.html" class="volver-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver
+    </a>
+    <main class="login-main">
+        <div class="login-blob blob-primary"></div>
+        <div class="login-blob blob-accent"></div>
+
+        <div class="login-container">
+            <div class="login-panel panel-form">
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <h1 class="form-title">Bienvenido de nuevo</h1>
+                        <p class="form-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
+                    </div>
+
+                    <!-- Tabs: Cliente / Profesional -->
+                    <div class="login-tabs">
+                        <button class="tab-btn" data-tab="cliente">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Cliente
+                        </button>
+                        <button class="tab-btn" data-tab="profesional">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                            </svg>
+                            Profesional
+                        </button>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form class="login-form" action="#" method="POST">
+                        <!-- Email -->
+                        <div class="input-group">
+                            <label class="input-label" for="email">Correo electrónico</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="input-field" 
+                                    placeholder="tu@ejemplo.com"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="input-group">
+                            <label class="input-label" for="password">Contraseña</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="input-field" 
+                                    placeholder="••••••••"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recordarme / Olvidé contraseña -->
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember" class="checkbox-input">
+                                <span class="checkbox-text">Recordarme</span>
+                            </label>
+                            <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                        </div>
+
+                        <!-- Botón Submit -->
+                        <button type="submit" class="btn-submit">
+                            Iniciar Sesión
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Registro -->
+                        <div class="form-footer">
+                            <p class="footer-text">
+                                ¿No tienes una cuenta? 
+                                <a href="/pages/registro.html" class="register-link">Regístrate gratis</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Panel derecho: Hero visual -->
+            <div class="login-panel panel-hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">Conecta con profesionales de confianza</h2>
+                    <p class="hero-description">
+                        Accede a miles de profesionales verificados listos para ayudarte con cualquier proyecto.
+                    </p>
+
+                    <!-- Features -->
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <path d="m9 11 3 3L22 4"></path>
+                                </svg>
+                            </div>
+                            <span>Perfiles verificados</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                            </div>
+                            <span>Calificaciones reales</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                </svg>
+                            </div>
+                            <span>Pago seguro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
