@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Ayuda de TuOficio</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/centro-ayuda.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a class="logo-link" href="/index.html">
+                <div class="logo-icon-box "> 
+                    <img width="70px" src="/assets/Gemini_Generated_Image_51omrp51omrp51om-removebg-preview.png" alt="TuOficiologo">
+                </div>
+                <span class="logo-texto">Tu oficio | Centro de Ayuda</span>
+            </a>
+        <nav class="nav-desktop">
+            <a class="nav-link" href="/pages/buscar.html">Buscar Profesionales</a>
+            <a class="nav-link" href="#como-funciona">Como Funciona</a>
+            <a class="nav-link" href="#categorias">Categorias</a>
+        </nav>
+        <div class="acciones-desktop">
+            <a  class="btn btn-transp" href="/pages/inicioSesion.html">
+                Iniciar sesion
+            </a>
+            <a class="btn btn-outline" href="/pages/formsProfesional.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Soy Profesional</a>
+            <a class="btn btn-outline" href="/pages/buscar.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                Contratar Servicios</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+        </button> 
+        </div>
+    </header>
+
+    <h1>¿Cómo te podemos ayudar?</h1>
+
+        <form>
+            <label for="centro-label"></label><br>
+            <input type="text" id="centro-qa-input" placeholder="Ingresa una pregunta, tema o un problema">
+        </form>
+
+    <div class ="hero-tags">
+        <span class = "tags-label">Temas Populares:</span>
+        <div class = "tags-wrapper">
+            <button class="tag-pill">Cómo me registro</button>
+            <button class="tag-pill">Métodos de pago</button>
+            <button class="tag-pill">Cancelar servicio</button>
+            <button class="tag-pill">Verificar profesional</button>
+            <button class="tag-pill">Crear perfil</button>
+        </div>
+    </div>
+    <section class="categorias-ayuda">
+            <div class="container-ayuda">
+                <h2 class="section-title">Categorías de ayuda</h2>
+                
+                <div class="grid-categorias">
+                    <!-- General -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h3>Dudas Generales</h3>
+                        <p>Todo lo que necesitas saber para contratar servicios</p>
+                        <ul class="categoria-links">
+                            <li><a href="#crear-cuenta">Crear una cuenta</a></li>
+                            <li><a href="#buscar-profesional">Buscar profesionales</a></li>
+                            <li><a href="#contratar-servicio">Contratar un servicio</a></li>
+                            <li><a href="#pagos-clientes">Métodos de pago</a></li>
+                            <li><a href="#calificaciones">Dejar calificaciones</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Para Profesionales -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3>Para Profesionales</h3>
+                        <p>Guía para ofrecer tus servicios en la plataforma</p>
+                        <ul class="categoria-links">
+                            <li><a href="#registrarse-profesional">Registrarse como profesional</a></li>
+                            <li><a href="#verificacion">Proceso de verificación</a></li>
+                            <li><a href="#crear-perfil">Crear tu perfil</a></li>
+                            <li><a href="#recibir-pagos">Recibir pagos</a></li>
+                            <li><a href="#gestionar-solicitudes">Gestionar solicitudes</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Pagos y Facturación -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                                <line x1="2" x2="22" y1="10" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3>Pagos y Facturación</h3>
+                        <p>Información sobre transacciones y facturación</p>
+                        <ul class="categoria-links">
+                            <li><a href="#metodos-pago">Métodos de pago aceptados</a></li>
+                            <li><a href="#facturacion">Solicitar factura</a></li>
+                            <li><a href="#reembolsos">Política de reembolsos</a></li>
+                            <li><a href="#seguridad-pagos">Seguridad en pagos</a></li>
+                            <li><a href="#historial">Ver historial de pagos</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Seguridad y Privacidad -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                            </svg>
+                        </div>
+                        <h3>Seguridad y Privacidad</h3>
+                        <p>Protege tu información y cuenta</p>
+                        <ul class="categoria-links">
+                            <li><a href="#proteger-cuenta">Proteger tu cuenta</a></li>
+                            <li><a href="#privacidad-datos">Privacidad de datos</a></li>
+                            <li><a href="#reportar-problema">Reportar un problema</a></li>
+                            <li><a href="#verificacion-identidad">Verificación de identidad</a></li>
+                            <li><a href="#denunciar">Denunciar comportamiento</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Cuenta y Configuración -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3>Cuenta y Configuración</h3>
+                        <p>Administra tu cuenta y preferencias</p>
+                        <ul class="categoria-links">
+                            <li><a href="#editar-perfil">Editar perfil</a></li>
+                            <li><a href="#cambiar-contrasena">Cambiar contraseña</a></li>
+                            <li><a href="#notificaciones">Configurar notificaciones</a></li>
+                            <li><a href="#cerrar-cuenta">Cerrar cuenta</a></li>
+                            <li><a href="#recuperar-cuenta">Recuperar acceso</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Problemas Técnicos -->
+                    <div class="categoria-card">
+                        <div class="categoria-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
+                        </div>
+                        <h3>Problemas Técnicos</h3>
+                        <p>Soluciona problemas con la plataforma</p>
+                        <ul class="categoria-links">
+                            <li><a href="#no-carga">La página no carga</a></li>
+                            <li><a href="#error-login">Error al iniciar sesión</a></li>
+                            <li><a href="#reportar-bug">Reportar un error</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preguntas Frecuentes -->
+        <section class="faq-section" id = "faq-section">
+            <div class="container-ayuda">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                            <span><strong>¿Cómo me registro en TuOficio?</strong></span>
+                        <div class="faq-answer">
+                            <p>Para registrarte, haz clic en "Iniciar sesión" en la parte superior derecha, luego selecciona "Crear cuenta". Completa el formulario con tu información personal, correo electrónico y crea una contraseña segura. Recibirás un correo de verificación para activar tu cuenta.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                            <span><strong>¿Es seguro contratar servicios a través de TuOficio?</strong></span>
+                        <div class="faq-answer">
+                            <p>Sí, todos nuestros profesionales pasan por un proceso de verificación que incluye validación de identidad y revisión de credenciales. Además, contamos con un sistema de calificaciones y reseñas para que puedas conocer la experiencia de otros usuarios.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                            <span><strong>¿Qué métodos de pago aceptan?</strong></span>
+                        <div class="faq-answer">
+                            <p>Aceptamos tarjetas de crédito y débito (Visa, Mastercard, American Express), transferencias bancarias, y pagos a través de plataformas digitales como PayPal. El método de pago específico puede variar según el profesional.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                            <span><strong>¿Cómo puedo convertirme en profesional verificado?</strong></span>
+                        <div class="faq-answer">
+                            <p>Regístrate como profesional haciendo clic en "Soy Profesional". Completa tu perfil con información detallada sobre tus servicios, experiencia y certificaciones. Luego sube los documentos requeridos (identificación oficial, comprobante de domicilio, certificaciones profesionales). Nuestro equipo revisará tu solicitud en 24-48 horas.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                            <span><strong>¿Puedo cancelar un servicio contratado?</strong></span>
+                        <div class="faq-answer">
+                            <p>Sí, puedes cancelar un servicio desde tu panel de usuario. Si cancelas con más de 24 horas de anticipación, recibirás un reembolso completo. Cancelaciones con menos de 24 horas están sujetas a una tarifa de cancelación del 20%.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                            <span><strong>¿Cómo contacto al soporte técnico?</strong></span> 
+                        <div class="faq-answer">
+                            <p>Puedes contactarnos por correo electrónico a soporte@tuoficio.com, a través del chat en vivo disponible de lunes a viernes de 9:00 a 18:00 hrs, o llamando al teléfono de soporte. También puedes enviar tu consulta mediante el formulario de contacto en esta página.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+</html>
