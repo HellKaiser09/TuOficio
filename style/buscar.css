@@ -24,6 +24,14 @@
     padding-right: 1.5rem;
 }
 
+.contenedor-centrado-busqueda {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
 @media (min-width: 1024px) {
     .columna-contenido {
         padding-right: 2rem;
@@ -43,7 +51,7 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
     animation: fadeIn 0.4s ease;
@@ -76,7 +84,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.65rem 1rem;
+    padding: 0.5rem 0.85rem;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -129,7 +137,7 @@
     border: none;
     outline: none;
     color: rgb(var(--foreground));
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .campo-texto::placeholder {
@@ -142,7 +150,7 @@
    ============================================ */
 
 .boton-buscar-principal {
-    padding: 0.65rem 1.5rem;
+    padding: 0.5rem 1.25rem;
     background: var(--gradient-hero);
     color: white;
     border: none;
@@ -187,7 +195,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.65rem;
+    padding: 0.5rem;
     background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(226, 232, 240, 0.6);
     backdrop-filter: blur(12px);
@@ -653,4 +661,5 @@
 .boton-perfil:hover {
     opacity: 0.9;
 }
+
 
