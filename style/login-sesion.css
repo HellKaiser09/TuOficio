@@ -252,7 +252,7 @@ body {
   background-color: transparent;
   border: none;
   border-radius: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
   color: rgb(var(--muted-foreground));
   cursor: pointer;
@@ -260,26 +260,21 @@ body {
   position: relative;
 }
 
-.tab-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-hero);
-  border-radius: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-
 .tab-btn svg,
 .tab-btn span {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .tab-btn:not(.active):hover {
   background-color: rgba(var(--primary), 0.05);
   color: rgb(var(--primary));
+}
+
+.tab-btn.active {
+  background: var(--gradient-hero);
+  color: white;
+  font-weight: 800;
 }
 
 /* ============================================

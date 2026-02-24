@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesional | Tu Oficio</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/profesional-publico.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a class="logo-link" href="/index.html">
+                <div class="logo-icon-box">
+                    <img width="70px" src="/assets/Gemini_Generated_Image_51omrp51omrp51om-removebg-preview.png" alt="TuOficiologo">
+                </div>
+                <span class="logo-texto">Tu oficio</span>
+            </a>
+            <nav class="nav-desktop">
+                <a class="nav-link" href="/pages/buscar.html">Buscar Profesionales</a>
+                <a class="nav-link" href="/index.html#como-funciona">Cómo Funciona</a>
+                <a class="nav-link" href="/index.html#categorias">Categorías</a>
+            </nav>
+            <div class="acciones-desktop"></div>
+        </div>
+    </header>
+
+    <main class="publico-main">
+        <div class="publico-container">
+
+            
+            <div class="publico-columna-principal">
+
+               
+                <div class="publico-card header-card">
+                    <div class="header-info">
+                        <img id="pub-foto" src="https://ui-avatars.com/api/?name=P&background=4f46e5&color=fff" class="pub-foto" alt="Foto">
+                        <div class="header-datos">
+                            <h1 id="pub-nombre">Cargando...</h1>
+                            <p id="pub-oficio" class="pub-oficio"></p>
+                            <div class="pub-meta">
+                                <span class="pub-rating">
+                                    ★ <span id="pub-calificacion">--</span>
+                                    <span id="pub-total-reviews" class="pub-reviews-count"></span>
+                                </span>
+                                <span class="pub-ubicacion">
+                                    📍 <span id="pub-ubicacion"></span>
+                                </span>
+                            </div>
+                            <div id="pub-servicios" class="pub-tags"></div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="publico-card">
+                    <h2 class="seccion-titulo">Acerca de <span id="pub-nombre-corto"></span></h2>
+                    <p id="pub-descripcion" class="pub-descripcion"></p>
+                </div>
+
+                
+                <div class="publico-card" id="card-certificaciones">
+                    <h2 class="seccion-titulo">Certificaciones y seguridad</h2>
+                    <div id="pub-certificaciones" class="pub-certs-lista"></div>
+                </div>
+
+               
+                <div class="publico-card">
+                    <h2 class="seccion-titulo">Reseñas de clientes</h2>
+
+                    
+                    <div id="form-review" style="display:none" class="form-review">
+                        <h3 class="review-form-titulo">Deja tu reseña</h3>
+                        <div class="estrellas-selector" id="estrellas-selector">
+                            <span class="estrella-btn" data-valor="1">★</span>
+                            <span class="estrella-btn" data-valor="2">★</span>
+                            <span class="estrella-btn" data-valor="3">★</span>
+                            <span class="estrella-btn" data-valor="4">★</span>
+                            <span class="estrella-btn" data-valor="5">★</span>
+                        </div>
+                        <textarea id="comentario-review" class="review-textarea" placeholder="Comparte tu experiencia con este profesional..."></textarea>
+                        <button id="btn-enviar-review" class="btn-enviar-review">Publicar reseña</button>
+                    </div>
+
+                    <div id="reviews-lista" class="reviews-lista">
+                        <p class="sin-reviews">Aún no hay reseñas.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="publico-columna-lateral">
+                <div class="publico-card lateral-sticky">
+
+                    <div class="pub-precio">
+                        <span id="pub-precio"></span>
+                    </div>
+
+                    <div id="pub-disponible" class="pub-disponible"></div>
+
+                    <p class="pub-horario">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Horario: <span id="pub-horario-texto">--</span>
+                    </p>
+
+                    <button class="btn-cotizar">Solicitar cotización</button>
+                    <button class="btn-llamar">Llamar ahora</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/profesional-publico.js"></script>
+</body>
+</html>

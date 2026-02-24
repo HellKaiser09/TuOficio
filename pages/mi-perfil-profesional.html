@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Tu Oficio</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/perfil.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a class="logo-link" href="/index.html">
+                <div class="logo-icon-box">
+                    <img width="70px" src="/assets/Gemini_Generated_Image_51omrp51omrp51om-removebg-preview.png" alt="TuOficiologo">
+                </div>
+                <span class="logo-texto">Tu oficio</span>
+            </a>
+            <nav class="nav-desktop">
+                <a class="nav-link" href="/pages/buscar.html">Buscar Profesionales</a>
+                <a class="nav-link" href="/index.html#como-funciona">Cómo Funciona</a>
+                <a class="nav-link" href="/index.html#categorias">Categorías</a>
+            </nav>
+            <div class="acciones-desktop"></div>
+        </div>
+    </header>
+
+    <main class="perfil-main">
+        <div class="perfil-container">
+
+            <!-- Columna izquierda: formulario de edición -->
+            <div class="perfil-columna-principal">
+
+                <!-- Card: Info básica -->
+                <div class="perfil-card" id="card-info-basica">
+                    <div class="perfil-card-header">
+                        <h2>Información del perfil</h2>
+                        <span class="perfil-badge" id="badge-disponible">Cargando...</span>
+                    </div>
+
+                    <div class="perfil-foto-section">
+                        <div class="perfil-foto-wrapper">
+                            <img id="foto-preview" src="https://ui-avatars.com/api/?name=P&background=4f46e5&color=fff" alt="Foto de perfil" class="perfil-foto">
+                            <label for="foto-input" class="perfil-foto-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"></path>
+                                    <circle cx="12" cy="13" r="3"></circle>
+                                </svg>
+                                <span>Cambiar foto</span>
+                            </label>
+                            <input type="file" id="foto-input" accept="image/*" style="display:none">
+                        </div>
+                        <div class="perfil-nombre-info">
+                            <h1 id="perfil-nombre">Cargando...</h1>
+                            <p id="perfil-oficio" class="perfil-oficio"></p>
+                            <p id="perfil-ubicacion" class="perfil-ubicacion">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span id="ubicacion-texto"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Descripción</label>
+                        <textarea id="descripcion" class="form-textarea" rows="4" placeholder="Describe tu experiencia y especialidades..."></textarea>
+                    </div>
+
+                    <div class="form-fila">
+                        <div class="form-grupo">
+                            <label class="form-label">Ciudad</label>
+                            <input type="text" id="ciudad" class="form-input" placeholder="CDMX">
+                        </div>
+                        <div class="form-grupo">
+                            <label class="form-label">Colonia</label>
+                            <input type="text" id="colonia" class="form-input" placeholder="Polanco">
+                        </div>
+                    </div>
+
+                    <div class="form-fila">
+                        <div class="form-grupo">
+                            <label class="form-label">Precio mínimo/hr</label>
+                            <input type="number" id="precio_min" class="form-input" placeholder="300">
+                        </div>
+                        <div class="form-grupo">
+                            <label class="form-label">Precio máximo/hr</label>
+                            <input type="number" id="precio_max" class="form-input" placeholder="800">
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Horario de atención</label>
+                        <input type="text" id="horario" class="form-input" placeholder="Lun-Sáb, 8:00 a 20:00">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Disponibilidad</label>
+                        <div class="toggle-wrapper">
+                            <label class="toggle">
+                                <input type="checkbox" id="disponible">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span id="disponible-texto">Disponible hoy</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Card: Servicios -->
+                <div class="perfil-card">
+                    <div class="perfil-card-header">
+                        <h2>Servicios que ofreces</h2>
+                    </div>
+                    <div id="servicios-lista" class="tags-lista"></div>
+                    <div class="agregar-tag-wrapper">
+                        <input type="text" id="nuevo-servicio" class="form-input" placeholder="Ej: Reparaciones, Instalaciones...">
+                        <button class="btn-agregar" id="btn-agregar-servicio">+ Agregar</button>
+                    </div>
+                </div>
+
+                <!-- Card: Certificaciones -->
+                <div class="perfil-card">
+                    <div class="perfil-card-header">
+                        <h2>Certificaciones y seguridad</h2>
+                    </div>
+                    <div id="certificaciones-lista" class="tags-lista"></div>
+                    <div class="agregar-tag-wrapper">
+                        <input type="text" id="nueva-certificacion" class="form-input" placeholder="Ej: Plomería residencial certificada...">
+                        <button class="btn-agregar" id="btn-agregar-cert">+ Agregar</button>
+                    </div>
+                </div>
+
+                <button class="btn-guardar" id="btn-guardar">
+                    Guardar cambios
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 0-2-2V5a2 2 0 0 0 2-2h11l5 5v11a2 2 0 0 0-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </button>
+
+                <div id="mensaje-guardado" style="display:none" class="mensaje-exito">
+                    Perfil actualizado correctamente
+                </div>
+
+            </div>
+
+            <!-- Columna derecha: vista previa -->
+            <div class="perfil-columna-lateral">
+                <div class="perfil-card lateral-card">
+                    <h3>Vista previa pública</h3>
+                    <p class="lateral-desc">Así te verán los clientes</p>
+                    <a id="link-ver-perfil" href="#" class="btn-ver-perfil" target="_blank">
+                        Ver mi perfil público
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="perfil-card lateral-card">
+                    <h3>Tu calificación</h3>
+                    <div class="calificacion-display">
+                        <span class="estrella">★</span>
+                        <span id="calificacion-valor" class="calificacion-numero">--</span>
+                        <span id="calificacion-total" class="calificacion-total"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/mi-perfil-profesional.js"></script>
+</body>
+</html>

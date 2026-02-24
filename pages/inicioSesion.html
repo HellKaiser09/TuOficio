@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión | Tu Oficio</title>
     <link rel="stylesheet" href="/style/login-sesion.css">
+    <script type="module" src="/js/login.js"></script>
 </head>
 <body>
     <a href="/index.html" class="volver-btn">
@@ -25,26 +26,8 @@
                         <p class="form-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
                     </div>
 
-                    <!-- Tabs: Cliente / Profesional -->
-                    <div class="login-tabs">
-                        <button class="tab-btn" data-tab="cliente">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            Cliente
-                        </button>
-                        <button class="tab-btn" data-tab="profesional">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                <rect width="20" height="14" x="2" y="6" rx="2"></rect>
-                            </svg>
-                            Profesional
-                        </button>
-                    </div>
-
                     <!-- Formulario -->
-                    <form class="login-form" action="#" method="POST">
+                    <form class="login-form" action="#" method="POST" >
                         <!-- Email -->
                         <div class="input-group">
                             <label class="input-label" for="email">Correo electrónico</label>
@@ -91,10 +74,6 @@
 
                         <!-- Recordarme / Olvidé contraseña -->
                         <div class="form-options">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="remember" class="checkbox-input">
-                                <span class="checkbox-text">Recordarme</span>
-                            </label>
                             <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                         </div>
 

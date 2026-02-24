@@ -3,165 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Oficio | Encuentra soluciones a tus problemas</title>
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/login-form.css">
+    <title>Registro | Tu Oficio</title>
+    <link rel="stylesheet" href="/style/login-sesion.css">
 </head>
 <body>
-    <div class="form-container">
-        <a href="/index.html" class="volver-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m15 18-6-6 6-6"></path>
-            </svg>
-            Volver
-        </a>    
-        <form>
-            <div class="form-section">
-                <h1 class="form-profesional-titulo">Registra tu perfil</h1>
-                <p class="subtitle">Complete la información para que las empresas puedan conocer su experiencia y habilidades</p>
+    <a href="/index.html" class="volver-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver
+    </a>
 
-                <!-- Información Básica -->
-                <h2 class="form-profesional-info-b section-title">Información Básica</h2>
+    <main class="login-main">
+        <div class="login-blob blob-primary"></div>
+        <div class="login-blob blob-accent"></div>
 
-                <div class="form-group">
-                    <label for="f-name-input">Nombre(s):</label>
-                    <input type="text" name="form-name" id="f-name-input">
-                </div>
+        <div class="login-container">
+            <div class="login-panel panel-form">
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <h1 class="form-title">Crear cuenta</h1>
+                        <p class="form-subtitle">¿Cómo quieres registrarte?</p>
+                    </div>
 
-                <div class="form-group">
-                    <label for="f-lname-input">Apellido(s):</label>
-                    <input type="text" name="form-lname" id="f-lname-input">
-                </div>
+                    <!-- Tabs tipo de cuenta -->
+                    <div class="login-tabs">
+                        <button class="tab-btn active" data-tipo="cliente">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Cliente
+                        </button>
+                        <button class="tab-btn" data-tipo="profesional">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                            </svg>
+                            Profesional
+                        </button>
+                    </div>
 
-                <div class="form-group">
-                    <label for="f-email-input">Correo Electrónico (e-mail):</label>
-                    <input type="email" name="form-email" id="f-email-input">
-                </div>
+                    <form class="login-form" id="registro-form">
 
-                <div class="form-group">
-                    <label for="f-phone-n-input">Teléfono:</label>
-                    <input type="tel" name="form-phone-number" id="f-phone-n-input">
+                        <!-- Campos comunes -->
+                        <div class="input-group">
+                            <label class="input-label" for="nombre">Nombre completo</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <input type="text" id="nombre" class="input-field" placeholder="Tu nombre completo" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="email">Correo electrónico</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                                <input type="email" id="email" class="input-field" placeholder="tu@ejemplo.com" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="telefono">Teléfono</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <input type="tel" id="telefono" class="input-field" placeholder="5512345678" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="password">Contraseña</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+                                <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Campos solo para profesional -->
+                        <div id="campos-profesional" style="display:none">
+
+                            <div class="input-group">
+                                <label class="input-label" for="oficio">Oficio</label>
+                                <div class="input-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                                    </svg>
+                                    <select id="oficio" class="input-field">
+                                        <option value="">Selecciona tu oficio</option>
+                                        <option value="Plomería">Plomería</option>
+                                        <option value="Electricidad">Electricidad</option>
+                                        <option value="Pintor">Pintor</option>
+                                        <option value="Carpintero">Carpintero</option>
+                                        <option value="Jardinero">Jardinero</option>
+                                        <option value="Limpieza">Limpieza</option>
+                                        <option value="Mecánico">Mecánico</option>
+                                        <option value="Clases">Clases</option>
+                                        <option value="Mantenimiento">Mantenimiento</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label class="input-label" for="ciudad">Ciudad</label>
+                                <div class="input-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <input type="text" id="ciudad" class="input-field" placeholder="CDMX">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label class="input-label" for="colonia">Colonia</label>
+                                <div class="input-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <input type="text" id="colonia" class="input-field" placeholder="Polanco">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label class="input-label">Rango de precio por hora</label>
+                                <div style="display:flex; gap: 12px;">
+                                    <div class="input-wrapper">
+                                        <input type="number" id="precio_min" class="input-field" placeholder="Mínimo $">
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="precio_max" class="input-field" placeholder="Máximo $">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            Crear cuenta
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+
+                        <div class="form-footer">
+                            <p class="footer-text">
+                                ¿Ya tienes cuenta?
+                                <a href="/pages/inicioSesion.html" class="register-link">Iniciar sesión</a>
+                            </p>
+                        </div>
+
+                    </form>
                 </div>
             </div>
 
-            <!-- Información Profesional -->
-            <div class="form-section">
-                <h2 class="form-profesional-info-prof section-title">Información Profesional</h2>
-
-                <div class="form-group">
-                    <label for="f-industries">Escoge tu Industria/Oficio:</label>
-                    <select name="form-industry" id="f-industries">
-                        <option value="">Seleccione una opción</option>
-                        <option value="f-plomeria">Plomería</option>
-                        <option value="f-electricidad">Electricidad</option>
-                        <option value="f-pintores">Pintor</option>
-                        <option value="f-carpinteros">Carpintero</option>
-                        <option value="f-jardineros">Jardinero</option>
-                        <option value="f-limpieza">Limpieza</option>
-                        <option value="f-mecanicos">Mecánico</option>
-                        <option value="f-educacion">Clases</option>
-                        <option value="f-mantenimiento">Mantenimiento</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Selecciona tu nivel de educación:</label>
-                    <div class="radio-group">
-                        <div class="radio-item">
-                            <input type="radio" name="nivel-educacion-form" id="form-primaria" value="primaria">
-                            <label for="form-primaria">Primaria</label>
+            <!-- Panel derecho -->
+            <div class="login-panel panel-hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">Únete a TuOficio hoy</h2>
+                    <p class="hero-description">
+                        Miles de profesionales y clientes ya confían en nuestra plataforma.
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <path d="m9 11 3 3L22 4"></path>
+                                </svg>
+                            </div>
+                            <span>Registro gratuito</span>
                         </div>
-
-                        <div class="radio-item">
-                            <input type="radio" name="nivel-educacion-form" id="form-secundaria" value="secundaria">
-                            <label for="form-secundaria">Secundaria</label>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                                </svg>
+                            </div>
+                            <span>Datos protegidos</span>
                         </div>
-
-                        <div class="radio-item">
-                            <input type="radio" name="nivel-educacion-form" id="form-preparatoria" value="preparatoria">
-                            <label for="form-preparatoria">Preparatoria</label>
-                        </div>
-
-                        <div class="radio-item">
-                            <input type="radio" name="nivel-educacion-form" id="form-universidad" value="universidad">
-                            <label for="form-universidad">Carrera Universitaria</label>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                                </svg>
+                            </div>
+                            <span>Calificaciones reales</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </main>
 
-            <!-- Tipo de Empleo Deseado -->
-            <div class="form-section">
-                <h2 class="section-title">Tipo de Empleo Deseado</h2>
-
-                <div class="form-group">
-                    <label>Seleccione las modalidades de empleo que busca:</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tiempo-completo" name="tipo-empleo" value="tiempo-completo">
-                            <label for="tiempo-completo">Tiempo Completo</label>
-                        </div>
-
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="medio-tiempo" name="tipo-empleo" value="medio-tiempo">
-                            <label for="medio-tiempo">Medio Tiempo</label>
-                        </div>
-
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="freelance" name="tipo-empleo" value="freelance">
-                            <label for="freelance">Freelance/Proyecto</label>
-                        </div>
-
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="remoto" name="tipo-empleo" value="remoto">
-                            <label for="remoto">Trabajo Remoto</label>
-                        </div>
-
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="hibrido" name="tipo-empleo" value="hibrido">
-                            <label for="hibrido">Híbrido</label>
-                        </div>
-
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="presencial" name="tipo-empleo" value="presencial">
-                            <label for="presencial">Presencial</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experiencia Laboral -->
-            <div class="form-section">
-                <h2 class="section-title">Experiencia Laboral</h2>
-
-                <div class="form-group">
-                    <label for="experiencia">Describa su experiencia profesional relevante:</label><br>
-                    <textarea 
-                        id="experiencia" 
-                        name="experiencia" 
-                        placeholder="Ejemplo: 5 años como plomero independiente realizando instalaciones residenciales y comerciales. Especializado en reparación de fugas, instalación de sistemas de agua caliente y mantenimiento preventivo."
-                    ></textarea>
-                    <p class="helper-text">Para mayor posibilidades de recluatimento, incluya trabajos anteriores, clientes destacados, tipos de proyectos realizados y especialidades.</p>
-                </div>
-            </div>
-
-            <!-- Habilidades -->
-            <div class="form-section">
-                <h2 class="section-title">Habilidades Profesionales</h2>
-
-                <div class="form-group">
-                    <label for="habilidades">Liste sus habilidades y competencias:</label><br>
-                    <textarea 
-                        id="habilidades" 
-                        name="habilidades" 
-                        placeholder="Ejemplo: Instalación de tuberías, soldadura, reparación de calentadores, lectura de planos, uso de herramientas especializadas, atención al cliente, trabajo bajo presión, puntualidad."
-                    ></textarea>
-                    <p class="helper-text">Mencione habilidades técnicas específicas de su oficio y habilidades generales como responsabilidad, comunicación, etc.</p>
-                </div>
-            </div>
-            <button type="submit">Guardar Perfil</button>
-        </form>
-    </div>
-    
+    <script type="module" src="/js/registro.js"></script>
 </body>
 </html>
