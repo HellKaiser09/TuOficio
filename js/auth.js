@@ -40,7 +40,7 @@ export function actualizarNavbar() {
       <a class="btn btn-transp" href="/pages/inicioSesion.html">
         Iniciar sesión
       </a>
-      <a class="btn btn-outline" href="/pages/registro.html">
+      <a class="btn btn-outline" href="/pages/formsProfesional.html">
         Registrarse
       </a>
     `

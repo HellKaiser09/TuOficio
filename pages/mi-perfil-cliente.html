@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Tu Oficio</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/perfil.css">
+    <script type="module" src="/js/auth.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a class="logo-link" href="/index.html">
+                <div class="logo-icon-box">
+                    <img width="70px" src="/assets/Gemini_Generated_Image_51omrp51omrp51om-removebg-preview.png" alt="TuOficiologo">
+                </div>
+                <span class="logo-texto">Tu oficio</span>
+            </a>
+            <nav class="nav-desktop">
+                <a class="nav-link" href="/pages/buscar.html">Buscar Profesionales</a>
+                <a class="nav-link" href="/index.html#como-funciona">Cómo Funciona</a>
+                <a class="nav-link" href="/index.html#categorias">Categorías</a>
+            </nav>
+            <div class="acciones-desktop"></div>
+        </div>
+    </header>
+
+    <main class="perfil-main">
+        <div class="perfil-container perfil-container-cliente">
+
+            <div class="perfil-columna-principal">
+
+                <!-- Card info básica -->
+                <div class="perfil-card">
+                    <div class="perfil-card-header">
+                        <h2>Mi información</h2>
+                    </div>
+
+                    <div class="perfil-foto-section">
+                        <div class="perfil-foto-wrapper">
+                            <img id="foto-preview" src="https://ui-avatars.com/api/?name=U&background=4f46e5&color=fff" alt="Foto de perfil" class="perfil-foto">
+                            <label for="foto-input" class="perfil-foto-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"></path>
+                                    <circle cx="12" cy="13" r="3"></circle>
+                                </svg>
+                                <span>Cambiar foto</span>
+                            </label>
+                            <input type="file" id="foto-input" accept="image/*" style="display:none">
+                        </div>
+                        <div class="perfil-nombre-info">
+                            <h1 id="perfil-nombre">Cargando...</h1>
+                            <p id="perfil-email" class="perfil-oficio"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Nombre completo</label>
+                        <input type="text" id="nombre" class="form-input" placeholder="Tu nombre completo">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" id="telefono" class="form-input" placeholder="5512345678">
+                    </div>
+
+                    <div class="form-fila">
+                        <div class="form-grupo">
+                            <label class="form-label">Ciudad</label>
+                            <input type="text" id="ciudad" class="form-input" placeholder="CDMX">
+                        </div>
+                        <div class="form-grupo">
+                            <label class="form-label">Colonia</label>
+                            <input type="text" id="colonia" class="form-input" placeholder="Polanco">
+                        </div>
+                    </div>
+
+                    <button class="btn-guardar" id="btn-guardar">
+                        Guardar cambios
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 0-2-2V5a2 2 0 0 0 2-2h11l5 5v11a2 2 0 0 0-2 2z"></path>
+                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            <polyline points="7 3 7 8 15 8"></polyline>
+                        </svg>
+                    </button>
+
+                    <div id="mensaje-guardado" style="display:none" class="mensaje-exito">
+                        Perfil actualizado correctamente
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Columna lateral -->
+            <div class="perfil-columna-lateral">
+                <div class="perfil-card lateral-card">
+                    <h3>Miembro desde</h3>
+                    <p id="fecha-registro" class="lateral-desc"></p>
+                </div>
+
+                <div class="perfil-card lateral-card">
+                    <h3>Seguridad</h3>
+                    <p class="lateral-desc">Tu información solo es visible para los profesionales con los que trabajas.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/mi-perfil-cliente.js"></script>
+</body>
+</html>

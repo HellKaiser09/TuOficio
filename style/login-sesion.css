@@ -611,6 +611,36 @@ body {
   outline-offset: 2px;
 }
 
+/* ============================================
+   VALIDACIÓN DE CAMPOS
+   ============================================ */
+
+.input-field.campo-error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input-field.campo-error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.msg-error-campo {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ef4444;
+  margin-top: 0.35rem;
+  animation: slideInFromBottom 0.2s ease;
+}
+
+.msg-error-campo::before {
+  content: '⚠';
+  font-size: 0.75rem;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

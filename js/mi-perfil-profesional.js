@@ -6,6 +6,7 @@ const token = localStorage.getItem('token')
 
 let servicios = []
 let certificaciones = []
+let fotoFile = null  // archivo de foto pendiente de subir
 
 document.addEventListener('DOMContentLoaded', async () => {
   if (!estaLogueado() || localStorage.getItem('tipo') !== 'profesional') {
@@ -121,10 +122,11 @@ function configurarEventos() {
     input.value = ''
   })
 
-  // Preview foto
+  // Preview foto + guardar referencia al archivo
   document.getElementById('foto-input').addEventListener('change', (e) => {
     const file = e.target.files[0]
     if (!file) return
+    fotoFile = file  // guardar para subir al guardar
     const reader = new FileReader()
     reader.onload = (ev) => {
       document.getElementById('foto-preview').src = ev.target.result
@@ -142,6 +144,29 @@ async function guardarCambios() {
   btn.disabled = true
 
   try {
+    // 1. Si hay foto nueva, subirla primero
+    if (fotoFile) {
+      btn.textContent = 'Subiendo foto...'
+      const formData = new FormData()
+      formData.append('foto', fotoFile)
+
+      const fotoRes = await fetch(`${API_URL}/profesionales/${id}/foto`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+        body: formData  // NO poner Content-Type: multer lo detecta solo
+      })
+
+      const fotoData = await fotoRes.json()
+      if (!fotoRes.ok) {
+        alert('Error subiendo la foto: ' + (fotoData.error || 'Error desconocido'))
+        return
+      }
+
+      fotoFile = null  // limpiar para no volver a subir
+      btn.textContent = 'Guardando...'
+    }
+
+    // 2. Guardar el resto del perfil
     const body = {
       descripcion: document.getElementById('descripcion').value,
       ciudad: document.getElementById('ciudad').value,
@@ -179,7 +204,8 @@ async function guardarCambios() {
       `${body.ciudad}, ${body.colonia}`
 
   } catch (error) {
-    alert('Error de conexión')
+    console.error('Error al guardar:', error)
+    alert('Error: ' + error.message)
   } finally {
     btn.innerHTML = `Guardar cambios <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 0-2-2V5a2 2 0 0 0 2-2h11l5 5v11a2 2 0 0 0-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>`
     btn.disabled = false

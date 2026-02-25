@@ -3,6 +3,59 @@ import { guardarSesion } from './auth.js'
 const API_URL = 'http://localhost:3000/api'
 let tipoActual = 'cliente'
 
+// ── Validaciones ──────────────────────────────────────
+const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+const REGEX_TELEFONO = /^\d{10}$/
+
+function mostrarErrorCampo(inputId, mensaje) {
+  const input = document.getElementById(inputId)
+  if (!input) return
+  input.classList.add('campo-error')
+  let span = input.closest('.input-group')?.querySelector('.msg-error-campo')
+  if (!span) {
+    span = document.createElement('span')
+    span.className = 'msg-error-campo'
+    input.closest('.input-group').appendChild(span)
+  }
+  span.textContent = mensaje
+}
+
+function limpiarErrorCampo(inputId) {
+  const input = document.getElementById(inputId)
+  if (!input) return
+  input.classList.remove('campo-error')
+  const span = input.closest('.input-group')?.querySelector('.msg-error-campo')
+  if (span) span.remove()
+}
+
+function validarRegistro(nombre, email, telefono, password) {
+  let valido = true
+  ;['nombre','email','telefono','password'].forEach(limpiarErrorCampo)
+
+  if (nombre.trim().length < 2) {
+    mostrarErrorCampo('nombre', 'Ingresa tu nombre completo')
+    valido = false
+  }
+
+  if (!REGEX_EMAIL.test(email)) {
+    mostrarErrorCampo('email', 'Correo inválido. Ej: usuario@dominio.com')
+    valido = false
+  }
+
+  const telefonoLimpio = telefono.replace(/[\s\-().]/g, '')
+  if (!REGEX_TELEFONO.test(telefonoLimpio)) {
+    mostrarErrorCampo('telefono', 'El teléfono debe tener exactamente 10 dígitos')
+    valido = false
+  }
+
+  if (password.length < 8) {
+    mostrarErrorCampo('password', 'La contraseña debe tener al menos 8 caracteres')
+    valido = false
+  }
+
+  return valido
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab-btn')
   const camposProfesional = document.getElementById('campos-profesional')
@@ -24,6 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
       camposExtra.forEach(campo => {
         campo.required = tipoActual === 'profesional'
       })
+    })
+  })
+
+  // Validar en tiempo real al salir de cada campo
+  ;[['email', () => !REGEX_EMAIL.test(document.getElementById('email').value.trim()) && 'Correo inválido. Ej: usuario@dominio.com'],
+    ['telefono', () => { const t = document.getElementById('telefono').value.replace(/[\s\-().]/g,''); return !REGEX_TELEFONO.test(t) && 'El teléfono debe tener 10 dígitos' }],
+    ['password', () => document.getElementById('password').value.length < 8 && 'Mínimo 8 caracteres']
+  ].forEach(([id, validar]) => {
+    document.getElementById(id)?.addEventListener('blur', () => {
+      const msg = validar()
+      if (document.getElementById(id).value && msg) mostrarErrorCampo(id, msg)
+      else limpiarErrorCampo(id)
     })
   })
 
@@ -51,9 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault()
 
     const nombre = document.getElementById('nombre').value
-    const email = document.getElementById('email').value
-    const telefono = document.getElementById('telefono').value
+    const email = document.getElementById('email').value.trim()
+    const telefono = document.getElementById('telefono').value.trim()
     const password = document.getElementById('password').value
+
+    if (!validarRegistro(nombre, email, telefono, password)) {
+      btnSubmit.textContent = 'Crear cuenta'
+      btnSubmit.disabled = false
+      return
+    }
 
     btnSubmit.textContent = 'Creando cuenta...'
     btnSubmit.disabled = true

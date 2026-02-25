@@ -387,3 +387,17 @@ input:checked + .toggle-slider::before {
   font-size: 0.85rem;
   color: rgb(var(--muted-foreground));
 }
+
+.mensaje-exito {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  background: #dcfce7;
+  color: #16a34a;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease;
+  z-index: 9999;
+}

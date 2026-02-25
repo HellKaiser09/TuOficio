@@ -2,6 +2,47 @@ import { guardarSesion } from './auth.js'
 
 const API_URL = 'http://localhost:3000/api'
 
+// ── Validaciones ──────────────────────────────────────
+const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
+function mostrarErrorCampo(inputId, mensaje) {
+  const input = document.getElementById(inputId)
+  input.classList.add('campo-error')
+  let span = input.closest('.input-group').querySelector('.msg-error-campo')
+  if (!span) {
+    span = document.createElement('span')
+    span.className = 'msg-error-campo'
+    input.closest('.input-group').appendChild(span)
+  }
+  span.textContent = mensaje
+}
+
+function limpiarErrorCampo(inputId) {
+  const input = document.getElementById(inputId)
+  input.classList.remove('campo-error')
+  const span = input.closest('.input-group')?.querySelector('.msg-error-campo')
+  if (span) span.remove()
+}
+
+function validarLogin(email, password) {
+  let valido = true
+
+  limpiarErrorCampo('email')
+  limpiarErrorCampo('password')
+
+  if (!REGEX_EMAIL.test(email)) {
+    mostrarErrorCampo('email', 'Ingresa un correo válido. Ej: usuario@dominio.com')
+    valido = false
+  }
+
+  if (password.length < 6) {
+    mostrarErrorCampo('password', 'La contraseña debe tener al menos 8 caracteres')
+    valido = false
+  }
+
+  return valido
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.login-form')
   const btnSubmit = document.querySelector('.btn-submit')
@@ -25,14 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>`
   })
 
+  // Validar email en tiempo real al salir del campo
+  document.getElementById('email').addEventListener('blur', () => {
+    const val = document.getElementById('email').value.trim()
+    if (val && !REGEX_EMAIL.test(val)) {
+      mostrarErrorCampo('email', 'Correo inválido. Ej: usuario@dominio.com')
+    } else {
+      limpiarErrorCampo('email')
+    }
+  })
+
   // ─── Olvidé mi contraseña ───────────────────────────
   const forgotLink = document.querySelector('.forgot-link')
   forgotLink.addEventListener('click', async (e) => {
     e.preventDefault()
 
-    const email = document.getElementById('email').value
+  const email = document.getElementById('email').value.trim()
     if (!email) {
       mostrarError('Escribe tu correo primero para recuperar tu contraseña')
+      return
+    }
+    if (!REGEX_EMAIL.test(email)) {
+      mostrarErrorCampo('email', 'Ingresa un correo válido antes de recuperar la contraseña')
       return
     }
 
@@ -57,8 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
 
-    const email = document.getElementById('email').value
+    limpiarMensajes()
+    const email = document.getElementById('email').value.trim()
     const password = document.getElementById('password').value
+
+    if (!validarLogin(email, password)) return
 
     btnSubmit.textContent = 'Cargando...'
     btnSubmit.disabled = true

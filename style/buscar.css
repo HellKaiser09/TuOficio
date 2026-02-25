@@ -309,6 +309,37 @@
     transform: translateX(4px);
 }
 
+.boton-filtro.activo {
+    background: rgba(var(--primary), 0.15);
+    color: rgb(var(--primary));
+    font-weight: 700;
+    border-left: 3px solid rgb(var(--primary));
+    padding-left: calc(0.75rem - 3px);
+    box-shadow: inset 0 0 0 1px rgba(var(--primary), 0.2);
+}
+
+.boton-filtro.activo::before {
+    width: 100%;
+    background: rgba(var(--primary), 0.08);
+}
+
+.boton-filtro.activo::after {
+    content: '';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 10px;
+    border-right: 2.5px solid rgb(var(--primary));
+    border-bottom: 2.5px solid rgb(var(--primary));
+    z-index: 1;
+}
+
+.boton-filtro.activo .icono-estrella {
+    color: rgb(var(--primary));
+}
+
 .boton-filtro > * {
     position: relative;
     z-index: 1;

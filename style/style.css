@@ -285,7 +285,7 @@ main{
 
 .tag-pill {
   border: none;
-  background-color: rgba(var(--border), 0.5); /* Usando border como fondo gris suave */
+  background-color: rgba(var(--border), 0.5);
   color: rgb(var(--foreground));
   padding: 0.5rem 1rem;
   border-radius: 9999px;
@@ -293,6 +293,8 @@ main{
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .tag-pill:hover {
