@@ -1,6 +1,3 @@
-[build]
-buildCommand = "cd Backend && npm install"
-
 [deploy]
 startCommand = "cd Backend && node app.js"
 healthcheckPath = "/"
