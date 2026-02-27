@@ -19,13 +19,18 @@ app.use((req, res, next) => {
   next()
 })
 
+const path = require('path')
+app.use(express.static(path.join(__dirname, '../')))
+
 // Rutas
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/profesionales', require('./routes/profesionales.routes'))
 app.use('/api/reviews', require('./routes/reviews.routes'))
 app.use('/api/usuarios', require('./routes/usuarios.routes'))
 
-app.get('/', (req, res) => res.json({ mensaje: 'API TuOficio funcionando' }))
+app.get('/{*path}', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'))
+})
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`))
