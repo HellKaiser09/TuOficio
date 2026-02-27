@@ -1,6 +1,5 @@
 import { estaLogueado, cerrarSesion, actualizarNavbar } from './auth.js'
-
-const API_URL = 'http://localhost:3000/api'
+import { API_URL } from './config.js'
 const id = localStorage.getItem('id')
 const token = localStorage.getItem('token')
 

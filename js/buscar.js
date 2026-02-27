@@ -1,6 +1,5 @@
 import { actualizarNavbar } from './auth.js'
-
-const API_URL = 'http://localhost:3000/api'
+import { API_URL } from './config.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   actualizarNavbar()

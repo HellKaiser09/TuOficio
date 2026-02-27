@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api'
+import { API_URL } from './config.js'
 
 export function guardarSesion(token, tipo, id) {
   localStorage.setItem('token', token)

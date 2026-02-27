@@ -1,6 +1,5 @@
 import { estaLogueado, actualizarNavbar } from './auth.js'
-
-const API_URL = 'http://localhost:3000/api'
+import { API_URL } from './config.js'
 const params = new URLSearchParams(window.location.search)
 const profesionalId = params.get('id')
 let calificacionSeleccionada = 0
