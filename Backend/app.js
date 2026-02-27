@@ -7,12 +7,11 @@ const app = express()
 const corsOptions = {
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204
+  allowedHeaders: ['Content-Type', 'Authorization']
 }
 
 app.use(cors(corsOptions))
+app.options('/{*path}', cors(corsOptions)) // preflight para todas las rutas
 app.use(express.json())
 
 app.use((req, res, next) => {
