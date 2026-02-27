@@ -21,6 +21,8 @@ app.use((req, res, next) => {
 
 const path = require('path')
 app.use(express.static(path.join(__dirname, '../')))
+console.log('Sirviendo estáticos desde:', path.join(__dirname, '../'))
+
 
 // Rutas
 app.use('/api/auth', require('./routes/auth.routes'))
