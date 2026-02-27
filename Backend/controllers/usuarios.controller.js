@@ -24,11 +24,11 @@ const actualizarUsuario = async (req, res) => {
   if (req.usuario.id !== id)
     return res.status(403).json({ error: 'No autorizado' })
 
-  const { nombre, telefono, ciudad, colonia, foto_url } = req.body
+  const { nombre, telefono, estado, municipio, foto_url } = req.body
 
   const { error } = await supabase
     .from('usuarios')
-    .update({ nombre, telefono, ciudad, colonia, foto_url })
+    .update({ nombre, telefono, estado, municipio, foto_url })
     .eq('id', id)
 
   if (error) return res.status(400).json({ error: error.message })

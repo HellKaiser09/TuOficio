@@ -64,36 +64,81 @@
                         </div>
                     </div>
 
-                    <div class="form-grupo">
+<div class="form-grupo">
                         <label class="form-label">Descripción</label>
                         <textarea id="descripcion" class="form-textarea" rows="4" placeholder="Describe tu experiencia y especialidades..."></textarea>
                     </div>
 
                     <div class="form-fila">
                         <div class="form-grupo">
-                            <label class="form-label">Ciudad</label>
-                            <input type="text" id="ciudad" class="form-input" placeholder="CDMX">
+                            <label class="form-label">Estado</label>
+                            <select id="estado" class="form-input">
+                                <option value="">Selecciona tu estado</option>
+                                <option>Aguascalientes</option>
+                                <option>Baja California</option>
+                                <option>Baja California Sur</option>
+                                <option>Campeche</option>
+                                <option>Chiapas</option>
+                                <option>Chihuahua</option>
+                                <option>Ciudad de México</option>
+                                <option>Coahuila</option>
+                                <option>Colima</option>
+                                <option>Durango</option>
+                                <option>Estado de México</option>
+                                <option>Guanajuato</option>
+                                <option>Guerrero</option>
+                                <option>Hidalgo</option>
+                                <option>Jalisco</option>
+                                <option>Michoacán</option>
+                                <option>Morelos</option>
+                                <option>Nayarit</option>
+                                <option>Nuevo León</option>
+                                <option>Oaxaca</option>
+                                <option>Puebla</option>
+                                <option>Querétaro</option>
+                                <option>Quintana Roo</option>
+                                <option>San Luis Potosí</option>
+                                <option>Sinaloa</option>
+                                <option>Sonora</option>
+                                <option>Tabasco</option>
+                                <option>Tamaulipas</option>
+                                <option>Tlaxcala</option>
+                                <option>Veracruz</option>
+                                <option>Yucatán</option>
+                                <option>Zacatecas</option>
+                            </select>
                         </div>
                         <div class="form-grupo">
-                            <label class="form-label">Colonia</label>
-                            <input type="text" id="colonia" class="form-input" placeholder="Polanco">
+                            <label class="form-label">Municipio</label>
+                            <input type="text" id="municipio" class="form-input" placeholder="Ej: Monterrey, Guadalajara...">
                         </div>
                     </div>
 
                     <div class="form-fila">
                         <div class="form-grupo">
-                            <label class="form-label">Precio mínimo/hr</label>
-                            <input type="number" id="precio_min" class="form-input" placeholder="300">
+                            <label class="form-label">Precio mínimo/hr ($)</label>
+                            <input type="number" id="precio_min" class="form-input" placeholder="50" min="50" max="9999">
                         </div>
                         <div class="form-grupo">
-                            <label class="form-label">Precio máximo/hr</label>
-                            <input type="number" id="precio_max" class="form-input" placeholder="800">
+                            <label class="form-label">Precio máximo/hr ($)</label>
+                            <input type="number" id="precio_max" class="form-input" placeholder="500" min="50" max="9999">
                         </div>
                     </div>
 
                     <div class="form-grupo">
                         <label class="form-label">Horario de atención</label>
-                        <input type="text" id="horario" class="form-input" placeholder="Lun-Sáb, 8:00 a 20:00">
+                        <select id="horario" class="form-input">
+                            <option value="">Selecciona tu horario</option>
+                            <option>Lunes a Viernes, 8:00 - 18:00</option>
+                            <option>Lunes a Viernes, 9:00 - 19:00</option>
+                            <option>Lunes a Sábado, 8:00 - 18:00</option>
+                            <option>Lunes a Sábado, 9:00 - 20:00</option>
+                            <option>Lunes a Domingo, 8:00 - 18:00</option>
+                            <option>Lunes a Domingo, 7:00 - 22:00</option>
+                            <option>Fines de semana, 9:00 - 18:00</option>
+                            <option>Disponible 24 horas</option>
+                            <option>Solo emergencias</option>
+                        </select>
                     </div>
 
                     <div class="form-grupo">
@@ -115,9 +160,10 @@
                         <h2>Servicios que ofreces</h2>
                     </div>
                     <div id="servicios-lista" class="tags-lista"></div>
-                    <div class="agregar-tag-wrapper">
-                        <input type="text" id="nuevo-servicio" class="form-input" placeholder="Ej: Reparaciones, Instalaciones...">
+                    <div class="agregar-tag-wrapper" style="position:relative;">
+                        <input type="text" id="nuevo-servicio" class="form-input" placeholder="Ej: Reparaciones, Instalaciones..." autocomplete="off">
                         <button class="btn-agregar" id="btn-agregar-servicio">+ Agregar</button>
+                        <div id="sugerencias-servicio" class="sugerencias-panel"></div>
                     </div>
                 </div>
 
@@ -127,9 +173,10 @@
                         <h2>Certificaciones y seguridad</h2>
                     </div>
                     <div id="certificaciones-lista" class="tags-lista"></div>
-                    <div class="agregar-tag-wrapper">
-                        <input type="text" id="nueva-certificacion" class="form-input" placeholder="Ej: Plomería residencial certificada...">
+                    <div class="agregar-tag-wrapper" style="position:relative;">
+                        <input type="text" id="nueva-certificacion" class="form-input" placeholder="Ej: Plomería residencial certificada..." autocomplete="off">
                         <button class="btn-agregar" id="btn-agregar-cert">+ Agregar</button>
+                        <div id="sugerencias-cert" class="sugerencias-panel"></div>
                     </div>
                 </div>
 

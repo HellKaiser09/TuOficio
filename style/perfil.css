@@ -154,6 +154,7 @@
   border-radius: 0.75rem;
   font-size: 0.95rem;
   color: rgb(var(--foreground));
+  background-color: rgb(var(--background));
   outline: none;
   transition: border-color 0.2s ease;
   width: 100%;

@@ -31,7 +31,7 @@ async function cargarPerfil() {
     document.getElementById('pub-nombre').textContent = data.nombre
     document.getElementById('pub-nombre-corto').textContent = data.nombre.split(' ')[0]
     document.getElementById('pub-oficio').textContent = data.oficio
-    document.getElementById('pub-ubicacion').textContent = `${data.ciudad || ''}, ${data.colonia || ''}`
+    document.getElementById('pub-ubicacion').textContent = `${data.estado || ''}, ${data.municipio || ''}`
     document.getElementById('pub-descripcion').textContent = data.descripcion || 'Sin descripción.'
     document.getElementById('pub-horario-texto').textContent = data.horario || '--'
 

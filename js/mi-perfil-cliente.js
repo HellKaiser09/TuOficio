@@ -26,8 +26,8 @@ async function cargarPerfil() {
     document.getElementById('perfil-email').textContent = data.email
     document.getElementById('nombre').value = data.nombre || ''
     document.getElementById('telefono').value = data.telefono || ''
-    document.getElementById('ciudad').value = data.ciudad || ''
-    document.getElementById('colonia').value = data.colonia || ''
+    document.getElementById('estado').value = data.estado || ''
+    document.getElementById('municipio').value = data.municipio || ''
 
     if (data.foto_url) {
       document.getElementById('foto-preview').src = data.foto_url
@@ -94,8 +94,8 @@ async function guardarCambios() {
     const body = {
       nombre: document.getElementById('nombre').value,
       telefono: document.getElementById('telefono').value,
-      ciudad: document.getElementById('ciudad').value,
-      colonia: document.getElementById('colonia').value
+      estado: document.getElementById('estado').value,
+      municipio: document.getElementById('municipio').value
     }
 
     const res = await fetch(`${API_URL}/usuarios/${id}`, {

@@ -14,14 +14,14 @@ const upload = multer({
 })
 
 const listarProfesionales = async (req, res) => {
-  const { oficio, ciudad, disponible, precio_max, precio_min, calificacion_min, verificado } = req.query
+  const { oficio, estado, disponible, precio_max, precio_min, calificacion_min, verificado } = req.query
 
   let query = supabase
     .from('profesionales')
     .select(`*, servicios(*), certificaciones(*)`)
 
   if (oficio) query = query.ilike('oficio', `%${oficio}%`)
-  if (ciudad) query = query.ilike('ciudad', `%${ciudad}%`)
+  if (estado) query = query.ilike('estado', `%${estado}%`)
   if (disponible === 'true') query = query.eq('disponible', true)
   if (verificado === 'true') query = query.eq('verificado', true)
   if (precio_max) query = query.lte('precio_min', parseInt(precio_max))
@@ -117,12 +117,9 @@ const actualizarPerfil = async (req, res) => {
   if (req.usuario.id !== id) {
     return res.status(403).json({ error: 'No tienes permiso para editar este perfil' })
   }
-  const { descripcion, precio_min, precio_max, disponible, foto_url, servicios, certificaciones } = req.body
+  const { descripcion, estado, municipio, precio_min, precio_max, horario, disponible, servicios, certificaciones } = req.body
 
-  
-  // Solo incluir foto_url en el update si viene en el body (evita borrar la foto existente)
-  const updateData = { descripcion, precio_min, precio_max, disponible }
-  if (foto_url !== undefined) updateData.foto_url = foto_url
+  const updateData = { descripcion, estado, municipio, precio_min, precio_max, horario, disponible }
 
   const { error } = await supabase
     .from('profesionales')

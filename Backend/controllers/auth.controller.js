@@ -23,7 +23,7 @@ const registroUsuario = async (req, res) => {
 
 // Registro de profesional
 const registroProfesional = async (req, res) => {
-  const { nombre, email, password, telefono, oficio, ciudad, colonia } = req.body
+  const { nombre, email, password, telefono, oficio, estado, municipio } = req.body
 
   const { data: authData, error: authError } = await supabase.auth.admin.createUser({
     email,
@@ -35,7 +35,7 @@ const registroProfesional = async (req, res) => {
 
   const { error: dbError } = await supabase
     .from('profesionales')
-    .insert({ id: authData.user.id, nombre, email, telefono, oficio, ciudad, colonia })
+    .insert({ id: authData.user.id, nombre, email, telefono, oficio, estado, municipio })
 
   if (dbError) return res.status(400).json({ error: dbError.message })
 

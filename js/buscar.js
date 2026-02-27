@@ -5,11 +5,25 @@ const API_URL = 'http://localhost:3000/api'
 document.addEventListener('DOMContentLoaded', () => {
   actualizarNavbar()
 
-  // Leer parámetro ?oficio= de la URL y pre-rellenar el input
-  const params = new URLSearchParams(window.location.search)
-  const oficioParam = params.get('oficio')
+  // Leer parámetros de URL y pre-rellenar filtros
+  const urlParams = new URLSearchParams(window.location.search)
+  const oficioParam = urlParams.get('oficio')
+  const estadoParam = urlParams.get('estado')
+
   if (oficioParam) {
     document.getElementById('input-oficio').value = oficioParam
+    const textoSpan = document.getElementById('dropdown-texto')
+    if (textoSpan) textoSpan.textContent = oficioParam
+    // Marcar item como seleccionado si coincide
+    document.querySelectorAll('#dropdown-lista .dropdown-item').forEach(item => {
+      if (item.dataset.value.toLowerCase() === oficioParam.toLowerCase()) {
+        item.classList.add('seleccionado')
+      }
+    })
+  }
+
+  if (estadoParam) {
+    document.getElementById('input-estado').value = estadoParam
   }
 
   cargarProfesionales()
@@ -18,42 +32,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function obtenerFiltros() {
   const oficio = document.getElementById('input-oficio').value.trim()
-  const ciudad = document.getElementById('input-ciudad').value.trim()
+  const estado = document.getElementById('input-estado').value.trim()
   const disponible = document.getElementById('check-disponible').checked
-  const verificado = document.getElementById('check-verificados').checked;
-  
-  // Calificación mínima
+  const verificado = document.getElementById('check-verificados').checked
+
   const btnCalifActivo = document.querySelector('.boton-filtro.activo[data-calif]')
   const calificacion_min = btnCalifActivo ? btnCalifActivo.dataset.calif : ''
 
-  // Precio
   const btnPrecioActivo = document.querySelector('.boton-filtro.activo[data-precio-max]')
   const precio_max = btnPrecioActivo ? btnPrecioActivo.dataset.precioMax : ''
-  const precio_min = btnPrecioActivo ? btnPrecioActivo.dataset.precioMin : ''
 
-  return { oficio, ciudad, disponible, calificacion_min, precio_max, precio_min, verificado }
+  return { oficio, estado, disponible, calificacion_min, precio_max, verificado }
 }
-
 async function cargarProfesionales() {
+  console.log('cargarProfesionales ejecutándose')
   const lista = document.getElementById('lista-tarjetas')
   lista.innerHTML = '<p style="padding:1rem;color:#64748b">Cargando profesionales...</p>'
 
-  const { oficio, ciudad, disponible, calificacion_min, precio_max, precio_min, verificado } = obtenerFiltros()
+  const { oficio, estado, disponible, calificacion_min, precio_max, verificado } = obtenerFiltros()
 
   const params = new URLSearchParams()
   if (oficio) params.append('oficio', oficio)
-  if (ciudad) params.append('ciudad', ciudad)
+  if (estado) params.append('estado', estado)
   if (disponible) params.append('disponible', 'true')
   if (verificado) params.append('verificado', 'true')
   if (calificacion_min) params.append('calificacion_min', calificacion_min)
   if (precio_max) params.append('precio_max', precio_max)
-  if (precio_min) params.append('precio_min', precio_min)
 
   const url = `${API_URL}/profesionales${params.toString() ? '?' + params.toString() : ''}`
 
   try {
-    const res = await fetch(url)
-    const profesionales = await res.json()
+const res = await fetch(url)
+const profesionales = await res.json()
+console.log('Profesionales:', profesionales)
 
     document.getElementById('contador').textContent = profesionales.length
     lista.innerHTML = ''
@@ -111,7 +122,7 @@ function crearTarjeta(pro) {
               <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            ${pro.ciudad || ''}, ${pro.colonia || ''}
+            ${pro.estado || ''}, ${pro.municipio || ''}
           </div>
         </div>
         <p class="pro-bio">${pro.descripcion || 'Sin descripción.'}</p>
@@ -129,46 +140,77 @@ function crearTarjeta(pro) {
 
 function configurarEventos() {
   // Botón buscar
-  document.querySelector('.boton-buscar-principal').addEventListener('click', cargarProfesionales);
+  document.querySelector('.boton-buscar-principal').addEventListener('click', cargarProfesionales)
 
-  // Enter en inputs
-  ['input-oficio', 'input-ciudad'].forEach(id => {
-    document.getElementById(id).addEventListener('keydown', e => {
-      if (e.key === 'Enter') cargarProfesionales()
+  // Enter en estado
+  document.getElementById('input-estado').addEventListener('keydown', e => {
+    if (e.key === 'Enter') cargarProfesionales()
+  })
+
+  // Filtrar al cambiar estado
+  document.getElementById('input-estado').addEventListener('change', cargarProfesionales)
+
+  // Dropdown personalizado
+  const dropdown = document.getElementById('dropdown-oficio')
+  const dropdownLista = document.getElementById('dropdown-lista')
+  const dropdownTexto = document.getElementById('dropdown-texto')
+  const inputOficio = document.getElementById('input-oficio')
+
+  dropdown.addEventListener('click', (e) => {
+    if (e.target.classList.contains('dropdown-item')) return
+    dropdown.classList.toggle('abierto')
+  })
+
+  dropdownLista.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const valor = item.dataset.value
+      inputOficio.value = valor
+      dropdownTexto.textContent = valor || '¿Qué servicio necesitas?'
+      dropdownLista.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'))
+      item.classList.add('seleccionado')
+      dropdown.classList.remove('abierto')
+      cargarProfesionales()
     })
   })
 
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('abierto')
+    }
+  })
+
   // Filtros de calificación
-    document.querySelectorAll('.boton-filtro[data-calif]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const estabaActivo = btn.classList.contains('activo');
-            document.querySelectorAll('.boton-filtro[data-calif]').forEach(b => b.classList.remove('activo'));
-            if (!estabaActivo) btn.classList.add('activo');    
-            cargarProfesionales();
-        });
-    });
+  document.querySelectorAll('.boton-filtro[data-calif]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const estabaActivo = btn.classList.contains('activo')
+      document.querySelectorAll('.boton-filtro[data-calif]').forEach(b => b.classList.remove('activo'))
+      if (!estabaActivo) btn.classList.add('activo')
+      cargarProfesionales()
+    })
+  })
 
   // Filtros de precio
-    document.querySelectorAll('.boton-filtro[data-precio-max]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const estabaActivo = btn.classList.contains('activo');
-            document.querySelectorAll('.boton-filtro[data-precio-max]').forEach(b => b.classList.remove('activo'));
-            if (!estabaActivo) btn.classList.add('activo');
-            
-            cargarProfesionales();
-        });
-    });
+  document.querySelectorAll('.boton-filtro[data-precio-max]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const estabaActivo = btn.classList.contains('activo')
+      document.querySelectorAll('.boton-filtro[data-precio-max]').forEach(b => b.classList.remove('activo'))
+      if (!estabaActivo) btn.classList.add('activo')
+      cargarProfesionales()
+    })
+  })
 
   // Checkbox disponible hoy
   document.getElementById('check-disponible').addEventListener('change', cargarProfesionales)
 
   // Limpiar filtros
   document.querySelector('.boton-limpiar').addEventListener('click', () => {
-    document.getElementById('input-oficio').value = ''
-    document.getElementById('input-ciudad').value = ''
+    inputOficio.value = ''
+    dropdownTexto.textContent = '¿Qué servicio necesitas?'
+    dropdownLista.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'))
+    document.getElementById('input-estado').value = ''
     document.getElementById('check-disponible').checked = false
-    document.querySelectorAll('.boton-filtro.activo').forEach(b => b.classList.remove('activo'))
     document.getElementById('check-verificados').checked = false
+    document.querySelectorAll('.boton-filtro.activo').forEach(b => b.classList.remove('activo'))
     cargarProfesionales()
   })
 }
