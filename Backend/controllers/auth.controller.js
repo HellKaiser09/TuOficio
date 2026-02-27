@@ -66,8 +66,16 @@ const login = async (req, res) => {
 const recuperarPassword = async (req, res) => {
   const { email } = req.body
 
+  const esLocal =
+    req.headers.origin?.includes('localhost') ||
+    req.headers.referer?.includes('localhost')
+
+  const baseUrl = esLocal
+    ? 'http://localhost:5500'
+    : 'https://tuoficio-production.up.railway.app'
+
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: 'http://localhost:5500/pages/nueva-password.html'
+    redirectTo: `${baseUrl}/pages/nueva-password.html`
   })
 
   res.json({ mensaje: 'Si el correo existe, recibirás un enlace' })
