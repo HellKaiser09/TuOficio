@@ -11,7 +11,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.options('*', cors(corsOptions)) // preflight para todas las rutas
+app.options('/{*path}', cors(corsOptions)) // preflight para todas las rutas
 app.use(express.json())
 
 app.use((req, res, next) => {
