@@ -4,4 +4,4 @@ const esLocal =
 
 export const API_URL = esLocal
   ? 'http://localhost:3000/api'
-  : 'https://tuoficio-production.up.railway.app/api'
+  : 'https://tuoficio-production-931c.up.railway.app/api'
