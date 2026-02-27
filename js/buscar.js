@@ -213,4 +213,33 @@ function configurarEventos() {
     document.querySelectorAll('.boton-filtro.activo').forEach(b => b.classList.remove('activo'))
     cargarProfesionales()
   })
+
+  // ── Menú de filtros móvil ──────────────────────────────────────────────
+  const barraLateral = document.querySelector('.barra-lateral')
+  const overlay = document.createElement('div')
+  overlay.className = 'filtros-overlay'
+  document.body.appendChild(overlay)
+
+  function abrirFiltros() {
+    barraLateral.classList.add('abierto')
+    overlay.classList.add('visible')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function cerrarFiltrosPanel() {
+    barraLateral.classList.remove('abierto')
+    overlay.classList.remove('visible')
+    document.body.style.overflow = ''
+  }
+
+  document.querySelector('.boton-filtros-movil').addEventListener('click', abrirFiltros)
+  document.querySelector('.cerrar-filtros').addEventListener('click', cerrarFiltrosPanel)
+  overlay.addEventListener('click', cerrarFiltrosPanel)
+
+  // Cerrar automáticamente al aplicar un filtro en móvil
+  document.querySelectorAll('.boton-filtro, #check-verificados, #check-disponible').forEach(el => {
+    el.addEventListener('click', () => {
+      if (window.innerWidth < 768) cerrarFiltrosPanel()
+    })
+  })
 }
