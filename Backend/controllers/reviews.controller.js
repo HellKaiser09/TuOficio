@@ -1,5 +1,6 @@
 const supabase = require('../config/supabase')
 
+//Crea la review con token para evitar que se den varias reviews sin user
 const crearReview = async (req, res) => {
   const { profesional_id, usuario_id, calificacion, comentario } = req.body
 
@@ -15,6 +16,7 @@ const crearReview = async (req, res) => {
   res.status(201).json({ mensaje: 'Review creada correctamente' })
 }
 
+// Trae las reviews
 const getReviewsProfesional = async (req, res) => {
   const { profesional_id } = req.params
 

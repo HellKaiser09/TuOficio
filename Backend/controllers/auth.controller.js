@@ -42,7 +42,7 @@ const registroProfesional = async (req, res) => {
   res.status(201).json({ mensaje: 'Profesional registrado correctamente' })
 }
 
-// Login (sirve para ambos tipos)
+// Login 
 const login = async (req, res) => {
   const { email, password } = req.body
 
@@ -63,6 +63,8 @@ const login = async (req, res) => {
   })
 }
 
+
+//despue se implmenta que hueva ahorita
 const recuperarPassword = async (req, res) => {
   const { email } = req.body
 

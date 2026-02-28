@@ -5,10 +5,9 @@ const token = localStorage.getItem('token')
 
 let servicios = []
 let certificaciones = []
-let fotoFile = null  // archivo de foto pendiente de subir
+let fotoFile = null  
 let oficioActual = ''
 
-// ── Sugerencias predefinidas por oficio ────────────────────────────────────────
 const SUGERENCIAS = {
   servicios: {
     Plomeria:       ['Reparación de fugas', 'Instalación de tuberías', 'Destapado de drenajes', 'Instalación de calentadores', 'Cambio de llaves y válvulas', 'Detección de fugas', 'Reparación de baños'],
@@ -40,7 +39,6 @@ function obtenerSugerencias(tipo, query = '') {
   return lista.filter(s => s.toLowerCase().includes(query.toLowerCase()))
 }
 
-// ── Validación de texto libre ──────────────────────────────────────────────────
 function validarTextoTag(valor) {
   if (valor.length < 4)            return 'Demasiado corto (mínimo 4 caracteres)'
   if (valor.length > 80)           return 'Demasiado largo (máximo 80 caracteres)'
@@ -66,7 +64,7 @@ async function cargarPerfil() {
     const res = await fetch(`${API_URL}/profesionales/${id}`)
     const data = await res.json()
 
-    // Info básica
+    
     document.getElementById('perfil-nombre').textContent = data.nombre
     document.getElementById('perfil-oficio').textContent = data.oficio
     oficioActual = data.oficio || ''
@@ -78,14 +76,14 @@ async function cargarPerfil() {
     document.getElementById('precio_max').value = data.precio_max || ''
     document.getElementById('horario').value = data.horario || ''
 
-    // Disponibilidad
+    
     const disponible = data.disponible
     document.getElementById('disponible').checked = disponible
     document.getElementById('disponible-texto').textContent = disponible ? 'Disponible hoy' : 'No disponible'
     document.getElementById('badge-disponible').textContent = disponible ? 'Disponible' : 'No disponible'
     document.getElementById('badge-disponible').className = `perfil-badge ${disponible ? 'badge-verde' : 'badge-rojo'}`
 
-    // Foto
+    
     if (data.foto_url) {
     document.getElementById('foto-preview').src = data.foto_url
     } else {
@@ -94,17 +92,17 @@ async function cargarPerfil() {
         `https://ui-avatars.com/api/?name=${nombreEncoded}&background=4f46e5&color=fff`
     }
 
-    // Servicios y certificaciones
+    
     servicios = data.servicios?.map(s => s.nombre) || []
     certificaciones = data.certificaciones?.map(c => c.nombre) || []
     renderTags('servicios-lista', servicios, 'servicio')
     renderTags('certificaciones-lista', certificaciones, 'certificacion')
 
-    // Calificación
+    
     document.getElementById('calificacion-valor').textContent = data.calificacion_promedio || '--'
     document.getElementById('calificacion-total').textContent = data.total_reviews ? `(${data.total_reviews} reseñas)` : ''
 
-    // Link perfil público
+    
     document.getElementById('link-ver-perfil').href = `/pages/profesional.html?id=${id}`
 
   } catch (error) {
@@ -125,7 +123,7 @@ function renderTags(contenedorId, lista, tipo) {
     contenedor.appendChild(tag)
   })
 
-  // Eventos para eliminar tags
+  
   contenedor.querySelectorAll('.tag-eliminar').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.index)
@@ -137,7 +135,7 @@ function renderTags(contenedorId, lista, tipo) {
 }
 
 function configurarEventos() {
-  // Toggle disponibilidad
+  
   document.getElementById('disponible').addEventListener('change', (e) => {
     const activo = e.target.checked
     document.getElementById('disponible-texto').textContent = activo ? 'Disponible hoy' : 'No disponible'
@@ -145,7 +143,7 @@ function configurarEventos() {
     document.getElementById('badge-disponible').className = `perfil-badge ${activo ? 'badge-verde' : 'badge-rojo'}`
   })
 
-  // ── Agregar servicio ────────────────────────────────────────────────────────
+
   configurarInputTag({
     inputId: 'nuevo-servicio',
     btnId: 'btn-agregar-servicio',
@@ -156,7 +154,6 @@ function configurarEventos() {
     tipoTag: 'servicio'
   })
 
-  // ── Agregar certificación ───────────────────────────────────────────────────
   configurarInputTag({
     inputId: 'nueva-certificacion',
     btnId: 'btn-agregar-cert',
@@ -167,7 +164,7 @@ function configurarEventos() {
     tipoTag: 'certificacion'
   })
 
-  // Preview foto + guardar referencia al archivo
+  
   document.getElementById('foto-input').addEventListener('change', (e) => {
     const file = e.target.files[0]
     if (!file) return
@@ -182,7 +179,6 @@ function configurarEventos() {
   document.getElementById('btn-guardar').addEventListener('click', guardarCambios)
 }
 
-// ── Lógica reutilizable para inputs de tags con sugerencias ────────────────────
 function configurarInputTag({ inputId, btnId, sugerenciasId, tipo, lista, listaId, tipoTag }) {
   const input = document.getElementById(inputId)
   const btn = document.getElementById(btnId)
@@ -211,7 +207,7 @@ function configurarInputTag({ inputId, btnId, sugerenciasId, tipo, lista, listaI
   function agregarTag(valor) {
     const v = valor.trim()
     if (!v) return
-    // Validar solo si es escritura manual (no sugerencia)
+    
     const esSugerencia = SUGERENCIAS[tipo][oficioActual]?.includes(v) ?? false
     if (!esSugerencia) {
       const error = validarTextoTag(v)
@@ -348,7 +344,7 @@ function mostrarError(mensaje) {
   btn.disabled = false
 
   const div = document.createElement('div')
-  div.textContent = '❌ ' + mensaje
+  div.textContent = mensaje
   div.style.cssText = 'position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;background:#fee2e2;color:#dc2626;border-radius:0.75rem;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.1);z-index:9999;'
   document.body.appendChild(div)
   setTimeout(() => div.remove(), 3000)

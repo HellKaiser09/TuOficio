@@ -4,7 +4,7 @@ import { API_URL } from './config.js'
 document.addEventListener('DOMContentLoaded', () => {
   actualizarNavbar()
 
-  // Leer parámetros de URL y pre-rellenar filtros
+  // Leer parámetros de URL
   const urlParams = new URLSearchParams(window.location.search)
   const oficioParam = urlParams.get('oficio')
   const estadoParam = urlParams.get('estado')
@@ -138,18 +138,18 @@ function crearTarjeta(pro) {
 }
 
 function configurarEventos() {
-  // Botón buscar
+  
   document.querySelector('.boton-buscar-principal').addEventListener('click', cargarProfesionales)
 
-  // Enter en estado
+ 
   document.getElementById('input-estado').addEventListener('keydown', e => {
     if (e.key === 'Enter') cargarProfesionales()
   })
 
-  // Filtrar al cambiar estado
+  
   document.getElementById('input-estado').addEventListener('change', cargarProfesionales)
 
-  // Dropdown personalizado
+
   const dropdown = document.getElementById('dropdown-oficio')
   const dropdownLista = document.getElementById('dropdown-lista')
   const dropdownTexto = document.getElementById('dropdown-texto')
@@ -213,7 +213,7 @@ function configurarEventos() {
     cargarProfesionales()
   })
 
-  // ── Menú de filtros móvil ──────────────────────────────────────────────
+  //  Menú de filtros móvil 
   const barraLateral = document.querySelector('.barra-lateral')
   const overlay = document.createElement('div')
   overlay.className = 'filtros-overlay'

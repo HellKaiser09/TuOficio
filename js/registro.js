@@ -2,7 +2,6 @@ import { guardarSesion } from './auth.js'
 import { API_URL } from './config.js'
 let tipoActual = 'cliente'
 
-// ── Validaciones ──────────────────────────────────────
 const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const REGEX_TELEFONO = /^\d{10}$/
 
@@ -61,17 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registro-form')
   const btnSubmit = document.querySelector('.btn-submit')
 
-  // ─── Tabs ───────────────────────────────────────────
+  
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'))
       tab.classList.add('active')
       tipoActual = tab.dataset.tipo
 
-      // Mostrar u ocultar campos de profesional
+      
       camposProfesional.style.display = tipoActual === 'profesional' ? 'block' : 'none'
 
-      // Campos requeridos dinámicos
+      
       const camposExtra = camposProfesional.querySelectorAll('input, select')
       camposExtra.forEach(campo => {
         campo.required = tipoActual === 'profesional'
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  // Validar en tiempo real al salir de cada campo
+ 
   ;[['email', () => !REGEX_EMAIL.test(document.getElementById('email').value.trim()) && 'Correo inválido. Ej: usuario@dominio.com'],
     ['telefono', () => { const t = document.getElementById('telefono').value.replace(/[\s\-().]/g,''); return !REGEX_TELEFONO.test(t) && 'El teléfono debe tener 10 dígitos' }],
     ['password', () => document.getElementById('password').value.length < 8 && 'Mínimo 8 caracteres']
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  // ─── Ver/ocultar contraseña ─────────────────────────
+  
   const toggleBtn = document.querySelector('.toggle-password')
   const passwordInput = document.getElementById('password')
 
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>`
   })
 
-  // ─── Submit ─────────────────────────────────────────
+  
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
 
@@ -171,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return
       }
 
-      // Login automático después del registro
+     
       const loginRes = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

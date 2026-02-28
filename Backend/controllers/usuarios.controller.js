@@ -49,7 +49,7 @@ const subirFotoUsuario = async (req, res) => {
   const fileName = `usuario_${id}.${extension || 'jpg'}`
 
   const { error } = await supabase.storage
-    .from('avatares')
+    .from('fotos-perfil')
     .upload(fileName, buffer, {
       contentType: `image/${extension || 'jpg'}`,
       upsert: true
@@ -58,7 +58,7 @@ const subirFotoUsuario = async (req, res) => {
   if (error) return res.status(400).json({ error: error.message })
 
   const { data } = supabase.storage
-    .from('avatares')
+    .from('fotos-perfil')
     .getPublicUrl(fileName)
 
   await supabase

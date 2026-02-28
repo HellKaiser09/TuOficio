@@ -40,11 +40,11 @@ export function actualizarNavbar() {
 
   accionesDesktop.innerHTML = buildAccionesHTML()
 
-  // Actualizar también el menú móvil si ya existe
+  
   const accionesMobile = document.getElementById('mobile-acciones')
   if (accionesMobile) accionesMobile.innerHTML = buildAccionesHTML()
 
-  // Cablear todos los botones de cerrar sesión (desktop + móvil)
+  
   document.querySelectorAll('.btn-cerrar-sesion').forEach(btn => {
     btn.addEventListener('click', cerrarSesion)
   })
@@ -59,7 +59,7 @@ function configurarMenuMovil() {
   panel.className = 'mobile-nav-panel'
   panel.id = 'mobile-nav-panel'
 
-  // Copiar los nav-links que ya están en .nav-desktop
+ 
   const navDesktop = document.querySelector('.nav-desktop')
   if (navDesktop) {
     navDesktop.querySelectorAll('a.nav-link').forEach(link => {
@@ -67,12 +67,12 @@ function configurarMenuMovil() {
     })
   }
 
-  // Separador
+ 
   const sep = document.createElement('div')
   sep.className = 'mobile-nav-divider'
   panel.appendChild(sep)
 
-  // Contenedor de acciones (login/perfil)
+  
   const accionesMobile = document.createElement('div')
   accionesMobile.id = 'mobile-acciones'
   accionesMobile.className = 'mobile-acciones'
@@ -81,7 +81,7 @@ function configurarMenuMovil() {
 
   document.body.appendChild(panel)
 
-  // Cablear botones de cerrar sesión dentro del panel
+  
   panel.querySelectorAll('.btn-cerrar-sesion').forEach(b => {
     b.addEventListener('click', cerrarSesion)
   })

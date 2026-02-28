@@ -21,12 +21,12 @@ async function cargarPerfil() {
     const res = await fetch(`${API_URL}/profesionales/${profesionalId}`)
     const data = await res.json()
 
-    // Foto
+    
     const nombreEncoded = encodeURIComponent(data.nombre)
     document.getElementById('pub-foto').src = data.foto_url ||
       `https://ui-avatars.com/api/?name=${nombreEncoded}&background=4f46e5&color=fff`
 
-    // Info básica
+    
     document.getElementById('pub-nombre').textContent = data.nombre
     document.getElementById('pub-nombre-corto').textContent = data.nombre.split(' ')[0]
     document.getElementById('pub-oficio').textContent = data.oficio
@@ -34,23 +34,23 @@ async function cargarPerfil() {
     document.getElementById('pub-descripcion').textContent = data.descripcion || 'Sin descripción.'
     document.getElementById('pub-horario-texto').textContent = data.horario || '--'
 
-    // Calificación
+    
     document.getElementById('pub-calificacion').textContent = data.calificacion_promedio || '--'
     document.getElementById('pub-total-reviews').textContent =
       data.total_reviews ? `(${data.total_reviews} reseñas)` : ''
 
-    // Precio
+    
     if (data.precio_min && data.precio_max) {
       document.getElementById('pub-precio').innerHTML =
         `<strong>$${data.precio_min} - $${data.precio_max}/hr</strong>`
     }
 
-    // Disponibilidad
+    
     const dispEl = document.getElementById('pub-disponible')
     dispEl.textContent = data.disponible ? 'Disponible hoy' : 'No disponible'
     dispEl.className = `pub-disponible ${data.disponible ? 'disponible-si' : 'disponible-no'}`
 
-    // Servicios tags
+    
     const serviciosEl = document.getElementById('pub-servicios')
     serviciosEl.innerHTML = ''
     data.servicios?.forEach(s => {
@@ -60,7 +60,7 @@ async function cargarPerfil() {
       serviciosEl.appendChild(tag)
     })
 
-    // Certificaciones
+    
     const certsEl = document.getElementById('pub-certificaciones')
     certsEl.innerHTML = ''
     if (data.certificaciones?.length) {
@@ -74,7 +74,7 @@ async function cargarPerfil() {
       document.getElementById('card-certificaciones').style.display = 'none'
     }
 
-    // Título de la página
+    
     document.title = `${data.nombre} | Tu Oficio`
 
   } catch (error) {
@@ -119,13 +119,13 @@ async function cargarReviews() {
 }
 
 function configurarReviews() {
-  // Mostrar form solo si es cliente logueado
+  
   const tipo = localStorage.getItem('tipo')
   if (estaLogueado() && tipo === 'usuario') {
     document.getElementById('form-review').style.display = 'block'
   }
 
-  // Selector de estrellas
+  
   const estrellasBtns = document.querySelectorAll('.estrella-btn')
   estrellasBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -136,7 +136,7 @@ function configurarReviews() {
     })
   })
 
-  // Enviar review
+ 
   document.getElementById('btn-enviar-review').addEventListener('click', async () => {
     if (!calificacionSeleccionada) {
       alert('Selecciona una calificación')

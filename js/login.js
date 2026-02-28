@@ -1,7 +1,7 @@
 import { guardarSesion } from './auth.js'
 import { API_URL } from './config.js'
 
-// ── Validaciones ──────────────────────────────────────
+
 const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 function mostrarErrorCampo(inputId, mensaje) {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.login-form')
   const btnSubmit = document.querySelector('.btn-submit')
 
-  // ─── Ver/ocultar contraseña ─────────────────────────
+  
   const toggleBtn = document.querySelector('.toggle-password')
   const passwordInput = document.getElementById('password')
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>`
   })
 
-  // Validar email en tiempo real al salir del campo
+
   document.getElementById('email').addEventListener('blur', () => {
     const val = document.getElementById('email').value.trim()
     if (val && !REGEX_EMAIL.test(val)) {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  // ─── Olvidé mi contraseña ───────────────────────────
+ 
   const forgotLink = document.querySelector('.forgot-link')
   forgotLink.addEventListener('click', async (e) => {
     e.preventDefault()
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  // ─── Submit Login ───────────────────────────────────
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
 

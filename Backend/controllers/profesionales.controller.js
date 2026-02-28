@@ -4,7 +4,7 @@ const multer = require('multer')
 // Config multer en memoria (no guarda en disco)
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB máximo
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: (req, file, cb) => {
     if (!file.mimetype.startsWith('image/')) {
       return cb(new Error('Solo se permiten imágenes'))
@@ -30,7 +30,7 @@ const listarProfesionales = async (req, res) => {
   const { data, error } = await query
   if (error) return res.status(400).json({ error: error.message })
 
-  // Filtrar por calificación mínima en memoria
+  // Filtrar por calificación mínima 
   let resultado = data
   if (calificacion_min) {
     const { data: todasReviews } = await supabase
