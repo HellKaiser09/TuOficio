@@ -81,7 +81,7 @@ async function cargarPerfil() {
     const telefono = data.telefono?.replace(/\D/g, '')
     const btnWhatsapp = document.getElementById('btn-whatsapp')
     if (telefono) {
-      btnWhatsapp.href = `https://wa.me/52${telefono}`
+      btnWhatsapp.href = `https://wa.me/${telefono}`
     } else {
       btnWhatsapp.style.display = 'none'
     }
