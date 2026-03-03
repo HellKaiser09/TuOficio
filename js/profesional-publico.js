@@ -77,15 +77,12 @@ async function cargarPerfil() {
     
     document.title = `${data.nombre} | Tu Oficio`
 
-    // Botones de contacto con el teléfono registrado
+    // Botón de WhatsApp con el teléfono registrado
     const telefono = data.telefono?.replace(/\D/g, '')
-    const btnLlamar = document.getElementById('btn-llamar')
     const btnWhatsapp = document.getElementById('btn-whatsapp')
     if (telefono) {
-      btnLlamar.href = `tel:${telefono}`
       btnWhatsapp.href = `https://wa.me/52${telefono}`
     } else {
-      btnLlamar.style.display = 'none'
       btnWhatsapp.style.display = 'none'
     }
 

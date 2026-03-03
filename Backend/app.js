@@ -30,7 +30,9 @@ app.use('/api/profesionales', require('./routes/profesionales.routes'))
 app.use('/api/reviews', require('./routes/reviews.routes'))
 app.use('/api/usuarios', require('./routes/usuarios.routes'))
 
-app.get('/{*path}', (req, res) => {
+app.get('/{*path}', (req, res, next) => {
+  // No interceptar archivos con extensión (css, js, png, etc.)
+  if (/\.[a-zA-Z0-9]+$/.test(req.path)) return next()
   res.sendFile(path.join(__dirname, '../index.html'))
 })
 
