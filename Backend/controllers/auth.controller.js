@@ -23,7 +23,9 @@ const registroUsuario = async (req, res) => {
 
 // Registro de profesional
 const registroProfesional = async (req, res) => {
-  const { nombre, email, password, telefono, oficio, estado, municipio } = req.body
+  const { nombre, email, password, telefono, oficio, estado, municipio, precio_min, precio_max } = req.body
+
+  const toNum = v => (v === '' || v === undefined || v === null || isNaN(Number(v))) ? null : Number(v)
 
   const { data: authData, error: authError } = await supabase.auth.admin.createUser({
     email,
@@ -35,7 +37,7 @@ const registroProfesional = async (req, res) => {
 
   const { error: dbError } = await supabase
     .from('profesionales')
-    .insert({ id: authData.user.id, nombre, email, telefono, oficio, estado, municipio })
+    .insert({ id: authData.user.id, nombre, email, telefono, oficio, estado, municipio, precio_min: toNum(precio_min), precio_max: toNum(precio_max) })
 
   if (dbError) return res.status(400).json({ error: dbError.message })
 

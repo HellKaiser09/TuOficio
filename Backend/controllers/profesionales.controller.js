@@ -119,7 +119,9 @@ const actualizarPerfil = async (req, res) => {
   }
   const { descripcion, estado, municipio, precio_min, precio_max, horario, disponible, servicios, certificaciones } = req.body
 
-  const updateData = { descripcion, estado, municipio, precio_min, precio_max, horario, disponible }
+  const toNum = v => (v === '' || v === undefined || v === null) ? null : Number(v)
+
+  const updateData = { descripcion, estado, municipio, precio_min: toNum(precio_min), precio_max: toNum(precio_max), horario, disponible }
 
   const { error } = await supabase
     .from('profesionales')

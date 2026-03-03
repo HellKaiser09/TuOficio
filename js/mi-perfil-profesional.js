@@ -168,7 +168,7 @@ function configurarEventos() {
   document.getElementById('foto-input').addEventListener('change', (e) => {
     const file = e.target.files[0]
     if (!file) return
-    fotoFile = file  // guardar para subir al guardar
+    fotoFile = file  
     const reader = new FileReader()
     reader.onload = (ev) => {
       document.getElementById('foto-preview').src = ev.target.result
@@ -293,12 +293,15 @@ async function guardarCambios() {
       btn.textContent = 'Guardando...'
     }
 
+    const rawMin = document.getElementById('precio_min').value
+    const rawMax = document.getElementById('precio_max').value
+
     const body = {
       descripcion: document.getElementById('descripcion').value,
       estado: document.getElementById('estado').value,
       municipio: document.getElementById('municipio').value,
-      precio_min: document.getElementById('precio_min').value,
-      precio_max: document.getElementById('precio_max').value,
+      precio_min: rawMin !== '' ? parseInt(rawMin) : null,
+      precio_max: rawMax !== '' ? parseInt(rawMax) : null,
       horario: document.getElementById('horario').value,
       disponible: document.getElementById('disponible').checked,
       servicios,

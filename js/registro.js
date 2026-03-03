@@ -137,24 +137,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const oficio = document.getElementById('oficio').value
         const estado = document.getElementById('estado').value
         const municipio = document.getElementById('municipio').value
-        const precio_min = parseInt(document.getElementById('precio_min').value)
-        const precio_max = parseInt(document.getElementById('precio_max').value)
+        const precio_min = document.getElementById('precio_min').value
+        const precio_max = document.getElementById('precio_max').value
+        const precioMinNum = precio_min !== '' ? parseInt(precio_min) : null
+        const precioMaxNum = precio_max !== '' ? parseInt(precio_max) : null
 
-        if (precio_min && (precio_min < 50 || precio_min > 9999)) {
+        if (precioMinNum && (precioMinNum < 50 || precioMinNum > 9999)) {
           mostrarError('El precio mínimo debe estar entre $50 y $9,999')
           return
         }
-        if (precio_max && (precio_max < 50 || precio_max > 9999)) {
+        if (precioMaxNum && (precioMaxNum < 50 || precioMaxNum > 9999)) {
           mostrarError('El precio máximo debe estar entre $50 y $9,999')
           return
         }
-        if (precio_min && precio_max && precio_min > precio_max) {
+        if (precioMinNum && precioMaxNum && precioMinNum > precioMaxNum) {
           mostrarError('El precio mínimo no puede ser mayor al máximo')
           return
         }
 
         endpoint = `${API_URL}/auth/registro/profesional`
-        body = { nombre, email, telefono, password, oficio, estado, municipio, precio_min, precio_max }
+        body = { nombre, email, telefono, password, oficio, estado, municipio, precio_min: precioMinNum, precio_max: precioMaxNum }
       }
 
       const response = await fetch(endpoint, {
